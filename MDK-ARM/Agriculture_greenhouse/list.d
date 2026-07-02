@@ -1,0 +1,12 @@
+agriculture_greenhouse\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+agriculture_greenhouse\list.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdlib.h
+agriculture_greenhouse\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+agriculture_greenhouse\list.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stddef.h
+agriculture_greenhouse\list.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdint.h
+agriculture_greenhouse\list.o: ../Core/Inc/FreeRTOSConfig.h
+agriculture_greenhouse\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+agriculture_greenhouse\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+agriculture_greenhouse\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+agriculture_greenhouse\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+agriculture_greenhouse\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+agriculture_greenhouse\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

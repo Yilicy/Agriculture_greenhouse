@@ -1,0 +1,13 @@
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/heap_4.c
+agriculture_greenhouse\heap_4.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdlib.h
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+agriculture_greenhouse\heap_4.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stddef.h
+agriculture_greenhouse\heap_4.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdint.h
+agriculture_greenhouse\heap_4.o: ../Core/Inc/FreeRTOSConfig.h
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+agriculture_greenhouse\heap_4.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

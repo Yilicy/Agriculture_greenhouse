@@ -1,0 +1,15 @@
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/event_groups.c
+agriculture_greenhouse\event_groups.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdlib.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+agriculture_greenhouse\event_groups.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stddef.h
+agriculture_greenhouse\event_groups.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdint.h
+agriculture_greenhouse\event_groups.o: ../Core/Inc/FreeRTOSConfig.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
+agriculture_greenhouse\event_groups.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h

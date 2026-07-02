@@ -1,0 +1,14 @@
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/stream_buffer.c
+agriculture_greenhouse\stream_buffer.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdint.h
+agriculture_greenhouse\stream_buffer.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\string.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+agriculture_greenhouse\stream_buffer.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stddef.h
+agriculture_greenhouse\stream_buffer.o: ../Core/Inc/FreeRTOSConfig.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+agriculture_greenhouse\stream_buffer.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/stream_buffer.h
