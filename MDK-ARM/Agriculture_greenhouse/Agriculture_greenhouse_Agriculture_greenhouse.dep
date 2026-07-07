@@ -1,10 +1,10 @@
 Dependencies for Project 'Agriculture_greenhouse', Target 'Agriculture_greenhouse': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
-F (startup_stm32f407xx.s)(0x6A44DD82)(--cpu Cortex-M4.fp.sp -g --apcs=interwork --pd "__MICROLIB SETA 1" -I ../Drivers/CMSIS/Include-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include--pd "__UVISION_VERSION SETA 536" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f407xx.lst --xref -o agriculture_greenhouse\startup_stm32f407xx.o --depend agriculture_greenhouse\startup_stm32f407xx.d)
-F (../Core/Src/main.c)(0x6A451362)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\main.o --omf_browse agriculture_greenhouse\main.crf --depend agriculture_greenhouse\main.d)
-I (../Core/Inc/main.h)(0x6A44DB72)
+F (startup_stm32f407xx.s)(0x6A487FA6)(--cpu Cortex-M4.fp.sp -g --apcs=interwork --pd "__MICROLIB SETA 1" -I ../Drivers/CMSIS/Include-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include--pd "__UVISION_VERSION SETA 536" --pd "_RTE_ SETA 1" --pd "STM32F407xx SETA 1" --pd "_RTE_ SETA 1"--list startup_stm32f407xx.lst --xref -o agriculture_greenhouse\startup_stm32f407xx.o --depend agriculture_greenhouse\startup_stm32f407xx.d)
+F (../Core/Src/main.c)(0x6A4CFE08)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\main.o --omf_browse agriculture_greenhouse\main.crf --depend agriculture_greenhouse\main.d)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -33,6 +33,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -67,21 +69,27 @@ I (../FATFS/Target/bsp_driver_sd.h)(0x6A44D4A9)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x69478F9A)
 I (../FATFS/Target/sd_diskio.h)(0x6A44D4A9)
+I (../Core/Inc/i2c.h)(0x6A470BE9)
 I (../Core/Inc/rtc.h)(0x6A44DD81)
 I (../Core/Inc/sdio.h)(0x6A44D4A9)
-I (../Core/Inc/tim.h)(0x6A44D4A9)
-I (../Core/Inc/usart.h)(0x6A44D4A9)
+I (../Core/Inc/tim.h)(0x6A4710E0)
+I (../Core/Inc/usart.h)(0x6A45BAA2)
 I (../Core/Inc/gpio.h)(0x6A44D4A7)
 I (../Core/Inc/fsmc.h)(0x6A44D4A9)
 I (../USER/Inc/lcd.h)(0x6A450CF5)
-I (../USER/Inc/lcd_draw.h)(0x6A450D41)
+I (../USER/Inc/lcd_draw.h)(0x6A4CED42)
 I (../USER/Inc/touch.h)(0x6A44D64D)
+I (../USER/Inc/esp8266.h)(0x6A4CFE6B)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-F (../Core/Src/gpio.c)(0x6A44DB6E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\gpio.o --omf_browse agriculture_greenhouse\gpio.crf --depend agriculture_greenhouse\gpio.d)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (../USER/Inc/remote.h)(0x6A48C8CE)
+I (../USER/Inc/sensor_data.h)(0x6A4B4F31)
+I (../USER/Inc/cloud_sync.h)(0x6A4BADD6)
+F (../Core/Src/gpio.c)(0x6A470BE6)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\gpio.o --omf_browse agriculture_greenhouse\gpio.crf --depend agriculture_greenhouse\gpio.d)
 I (../Core/Inc/gpio.h)(0x6A44D4A7)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -110,6 +118,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -120,7 +130,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
-F (../Core/Src/freertos.c)(0x6A45191E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\freertos.o --omf_browse agriculture_greenhouse\freertos.crf --depend agriculture_greenhouse\freertos.d)
+F (../Core/Src/freertos.c)(0x6A4CFCF6)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\freertos.o --omf_browse agriculture_greenhouse\freertos.crf --depend agriculture_greenhouse\freertos.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x69478F9A)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -132,9 +142,9 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x69478F9A)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -161,6 +171,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -178,16 +190,17 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x69478F9A)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\time.h)(0x60252378)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\math.h)(0x60252378)
-I (../Core/Inc/usart.h)(0x6A44D4A9)
-I (../Core/Inc/tim.h)(0x6A44D4A9)
-I (../USER/Inc/dht.h)(0x6A44BD99)
+I (../Core/Inc/usart.h)(0x6A45BAA2)
+I (../Core/Inc/tim.h)(0x6A4710E0)
+I (../USER/Inc/dht.h)(0x6A49FD0C)
 I (../USER/Inc/lcd.h)(0x6A450CF5)
-I (../USER/Inc/lcd_draw.h)(0x6A450D41)
+I (../USER/Inc/lcd_draw.h)(0x6A4CED42)
+I (../USER/Inc/pic.h)(0x6A4A147F)
 I (../Core/Inc/gpio.h)(0x6A44D4A7)
 I (../Core/Inc/adc.h)(0x6A451401)
 I (../USER/Inc/touch.h)(0x6A44D64D)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../USER/Inc/sd.h)(0x6A44D636)
+I (../USER/Inc/sd.h)(0x6A4C5656)
 I (../Core/Inc/sdio.h)(0x6A44D4A9)
 I (../FATFS/App/fatfs.h)(0x6A44D4A9)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
@@ -197,13 +210,20 @@ I (../FATFS/Target/bsp_driver_sd.h)(0x6A44D4A9)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x69478F9A)
 I (../FATFS/Target/sd_diskio.h)(0x6A44D4A9)
-I (../USER/Inc/ss_rtc.h)(0x6A44D646)
-I (../USER/Inc/sensor_data.h)(0x6A451851)
+I (../USER/Inc/ss_rtc.h)(0x6A4A11E9)
+I (../USER/Inc/SG90.h)(0x6A4B0E16)
+I (../USER/Inc/BH1750.h)(0x6A48A813)
+I (../USER/Inc/Motor.h)(0x6A4B0F1A)
+I (../USER/Inc/esp8266.h)(0x6A4CFE6B)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdlib.h)(0x60252374)
+I (../USER/Inc/sensor_data.h)(0x6A4B4F31)
+I (../USER/Inc/auto_control.h)(0x6A4C9854)
+I (../USER/Inc/system_config.h)(0x6A4CBAD6)
 F (../Core/Src/adc.c)(0x6A451550)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\adc.o --omf_browse agriculture_greenhouse\adc.crf --depend agriculture_greenhouse\adc.d)
 I (../Core/Inc/adc.h)(0x6A451401)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -232,6 +252,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -244,9 +266,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 F (../Core/Src/dma.c)(0x6A44D4A9)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\dma.o --omf_browse agriculture_greenhouse\dma.crf --depend agriculture_greenhouse\dma.d)
 I (../Core/Inc/dma.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -275,6 +297,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -285,11 +309,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
-F (../Core/Src/fsmc.c)(0x6A45100E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\fsmc.o --omf_browse agriculture_greenhouse\fsmc.crf --depend agriculture_greenhouse\fsmc.d)
+F (../Core/Src/fsmc.c)(0x6A48CB1B)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\fsmc.o --omf_browse agriculture_greenhouse\fsmc.crf --depend agriculture_greenhouse\fsmc.d)
 I (../Core/Inc/fsmc.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -318,6 +342,53 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+F (../Core/Src/i2c.c)(0x6A487FA4)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\i2c.o --omf_browse agriculture_greenhouse\i2c.crf --depend agriculture_greenhouse\i2c.d)
+I (../Core/Inc/i2c.h)(0x6A470BE9)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -330,9 +401,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 F (../Core/Src/rtc.c)(0x6A44DD81)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\rtc.o --omf_browse agriculture_greenhouse\rtc.crf --depend agriculture_greenhouse\rtc.d)
 I (../Core/Inc/rtc.h)(0x6A44DD81)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -361,6 +432,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -371,11 +444,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
-F (../Core/Src/sdio.c)(0x6A44D4A9)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\sdio.o --omf_browse agriculture_greenhouse\sdio.crf --depend agriculture_greenhouse\sdio.d)
+F (../Core/Src/sdio.c)(0x6A49165A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\sdio.o --omf_browse agriculture_greenhouse\sdio.crf --depend agriculture_greenhouse\sdio.d)
 I (../Core/Inc/sdio.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -404,6 +477,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -414,11 +489,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
-F (../Core/Src/tim.c)(0x6A451122)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\tim.o --omf_browse agriculture_greenhouse\tim.crf --depend agriculture_greenhouse\tim.d)
-I (../Core/Inc/tim.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+F (../Core/Src/tim.c)(0x6A48CAB3)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\tim.o --omf_browse agriculture_greenhouse\tim.crf --depend agriculture_greenhouse\tim.d)
+I (../Core/Inc/tim.h)(0x6A4710E0)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -447,6 +522,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -458,11 +535,11 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (../Core/Inc/adc.h)(0x6A451401)
-F (../Core/Src/usart.c)(0x6A44D4A9)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\usart.o --omf_browse agriculture_greenhouse\usart.crf --depend agriculture_greenhouse\usart.d)
-I (../Core/Inc/usart.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+F (../Core/Src/usart.c)(0x6A4CFDDF)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\usart.o --omf_browse agriculture_greenhouse\usart.crf --depend agriculture_greenhouse\usart.d)
+I (../Core/Inc/usart.h)(0x6A45BAA2)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -491,6 +568,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -501,10 +580,10 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
-F (../Core/Src/stm32f4xx_it.c)(0x6A44D4A9)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_it.o --omf_browse agriculture_greenhouse\stm32f4xx_it.crf --depend agriculture_greenhouse\stm32f4xx_it.d)
-I (../Core/Inc/main.h)(0x6A44DB72)
+F (../Core/Src/stm32f4xx_it.c)(0x6A4C61B1)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_it.o --omf_browse agriculture_greenhouse\stm32f4xx_it.crf --depend agriculture_greenhouse\stm32f4xx_it.d)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -533,6 +612,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -543,7 +624,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
-I (../Core/Inc/stm32f4xx_it.h)(0x6A44D4A9)
+I (../Core/Inc/stm32f4xx_it.h)(0x6A4878A4)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x69478F9A)
 I (../Core/Inc/FreeRTOSConfig.h)(0x6A451495)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x69478F9A)
@@ -554,9 +635,9 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x69478F9A
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x69478F9A)
 F (../Core/Src/stm32f4xx_hal_msp.c)(0x6A44D4AA)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_msp.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_msp.crf --depend agriculture_greenhouse\stm32f4xx_hal_msp.d)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -585,6 +666,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -597,7 +680,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_adc.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_adc.crf --depend agriculture_greenhouse\stm32f4xx_hal_adc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -626,6 +709,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -637,7 +722,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_adc_ex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_adc_ex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_adc_ex.crf --depend agriculture_greenhouse\stm32f4xx_hal_adc_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -666,6 +751,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -678,7 +765,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_adc.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_ll_adc.o --omf_browse agriculture_greenhouse\stm32f4xx_ll_adc.crf --depend agriculture_greenhouse\stm32f4xx_ll_adc.d)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_rcc.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_rcc.crf --depend agriculture_greenhouse\stm32f4xx_hal_rcc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -707,6 +794,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -718,7 +807,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_rcc_ex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_rcc_ex.crf --depend agriculture_greenhouse\stm32f4xx_hal_rcc_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -747,6 +836,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -758,7 +849,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_flash.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_flash.crf --depend agriculture_greenhouse\stm32f4xx_hal_flash.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -787,6 +878,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -798,7 +891,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_flash_ex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_flash_ex.crf --depend agriculture_greenhouse\stm32f4xx_hal_flash_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -827,6 +920,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -838,7 +933,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_flash_ramfunc.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_flash_ramfunc.crf --depend agriculture_greenhouse\stm32f4xx_hal_flash_ramfunc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -867,6 +962,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -878,7 +975,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_gpio.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_gpio.crf --depend agriculture_greenhouse\stm32f4xx_hal_gpio.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -907,6 +1004,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -918,7 +1017,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_dma_ex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_dma_ex.crf --depend agriculture_greenhouse\stm32f4xx_hal_dma_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -947,6 +1046,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -958,7 +1059,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_dma.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_dma.crf --depend agriculture_greenhouse\stm32f4xx_hal_dma.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -987,6 +1088,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -998,7 +1101,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_pwr.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_pwr.crf --depend agriculture_greenhouse\stm32f4xx_hal_pwr.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1027,6 +1130,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1038,7 +1143,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_pwr_ex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_pwr_ex.crf --depend agriculture_greenhouse\stm32f4xx_hal_pwr_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1067,6 +1172,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1078,7 +1185,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_cortex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_cortex.crf --depend agriculture_greenhouse\stm32f4xx_hal_cortex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1107,6 +1214,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1118,7 +1227,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal.o --omf_browse agriculture_greenhouse\stm32f4xx_hal.crf --depend agriculture_greenhouse\stm32f4xx_hal.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1147,6 +1256,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1158,7 +1269,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_exti.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_exti.crf --depend agriculture_greenhouse\stm32f4xx_hal_exti.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1187,6 +1298,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1198,7 +1311,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_ll_fsmc.o --omf_browse agriculture_greenhouse\stm32f4xx_ll_fsmc.crf --depend agriculture_greenhouse\stm32f4xx_ll_fsmc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1227,6 +1340,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1238,7 +1353,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_nor.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_nor.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_nor.crf --depend agriculture_greenhouse\stm32f4xx_hal_nor.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1267,6 +1382,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1278,7 +1395,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_sram.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_sram.crf --depend agriculture_greenhouse\stm32f4xx_hal_sram.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1307,6 +1424,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1318,7 +1437,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_nand.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_nand.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_nand.crf --depend agriculture_greenhouse\stm32f4xx_hal_nand.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1347,6 +1466,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1358,7 +1479,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pccard.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_pccard.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_pccard.crf --depend agriculture_greenhouse\stm32f4xx_hal_pccard.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1387,6 +1508,92 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_i2c.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_i2c.crf --depend agriculture_greenhouse\stm32f4xx_hal_i2c.d)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_i2c_ex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_i2c_ex.crf --depend agriculture_greenhouse\stm32f4xx_hal_i2c_ex.d)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1398,7 +1605,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_rtc.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_rtc.crf --depend agriculture_greenhouse\stm32f4xx_hal_rtc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1427,6 +1634,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1438,7 +1647,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_rtc_ex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_rtc_ex.crf --depend agriculture_greenhouse\stm32f4xx_hal_rtc_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1467,6 +1676,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1478,7 +1689,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_ll_sdmmc.o --omf_browse agriculture_greenhouse\stm32f4xx_ll_sdmmc.crf --depend agriculture_greenhouse\stm32f4xx_ll_sdmmc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1507,6 +1718,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1518,7 +1731,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_sd.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_sd.crf --depend agriculture_greenhouse\stm32f4xx_hal_sd.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1547,6 +1760,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1558,7 +1773,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_mmc.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_mmc.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_mmc.crf --depend agriculture_greenhouse\stm32f4xx_hal_mmc.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1587,6 +1802,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1598,7 +1815,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_tim.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_tim.crf --depend agriculture_greenhouse\stm32f4xx_hal_tim.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1627,6 +1844,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1638,7 +1857,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_tim_ex.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_tim_ex.crf --depend agriculture_greenhouse\stm32f4xx_hal_tim_ex.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1667,6 +1886,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1678,7 +1899,7 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 F (../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c)(0x69478FF0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\stm32f4xx_hal_uart.o --omf_browse agriculture_greenhouse\stm32f4xx_hal_uart.crf --depend agriculture_greenhouse\stm32f4xx_hal_uart.d)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1707,6 +1928,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1727,7 +1950,7 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
 I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
@@ -1747,6 +1970,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1756,8 +1981,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
-F (..\USER\Src\dht.c)(0x6A44C8EE)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\dht.o --omf_browse agriculture_greenhouse\dht.crf --depend agriculture_greenhouse\dht.d)
-I (../USER/Inc/dht.h)(0x6A44BD99)
+F (..\USER\Src\dht.c)(0x6A4CF526)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\dht.o --omf_browse agriculture_greenhouse\dht.crf --depend agriculture_greenhouse\dht.d)
+I (../USER/Inc/dht.h)(0x6A49FD0C)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
 I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
@@ -1768,7 +1993,7 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
 I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
@@ -1788,6 +2013,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1797,9 +2024,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
-I (../Core/Inc/usart.h)(0x6A44D4A9)
+I (../Core/Inc/usart.h)(0x6A45BAA2)
 F (..\USER\Src\24cxx.c)(0x69CA7F1D)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\24cxx.o --omf_browse agriculture_greenhouse\24cxx.crf --depend agriculture_greenhouse\24cxx.d)
 I (../USER/Inc/24cxx.h)(0x69CA7F1D)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
@@ -1810,10 +2037,10 @@ I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
 I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
 I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
-I (../USER/Inc/iic.h)(0x69CA7F1D)
+I (../USER/Inc/iic.h)(0x6A48813C)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
@@ -1833,6 +2060,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1842,8 +2071,10 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
-F (..\USER\Src\iic.c)(0x6A44D818)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\iic.o --omf_browse agriculture_greenhouse\iic.crf --depend agriculture_greenhouse\iic.d)
-I (../USER/Inc/iic.h)(0x69CA7F1D)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+F (..\USER\Src\iic.c)(0x6A488118)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\iic.o --omf_browse agriculture_greenhouse\iic.crf --depend agriculture_greenhouse\iic.d)
+I (../USER/Inc/iic.h)(0x6A48813C)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
 I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
@@ -1854,7 +2085,7 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
 I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
@@ -1874,6 +2105,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1883,8 +2116,10 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
-F (..\USER\Src\lcd_draw.c)(0x6A450D4F)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\lcd_draw.o --omf_browse agriculture_greenhouse\lcd_draw.crf --depend agriculture_greenhouse\lcd_draw.d)
-I (../USER/Inc/lcd_draw.h)(0x6A450D41)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+F (..\USER\Src\lcd_draw.c)(0x6A4CEE01)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\lcd_draw.o --omf_browse agriculture_greenhouse\lcd_draw.crf --depend agriculture_greenhouse\lcd_draw.d)
+I (../USER/Inc/lcd_draw.h)(0x6A4CED42)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
 I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
@@ -1894,9 +2129,9 @@ I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
 I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
 I (../USER/Inc/lcd.h)(0x6A450CF5)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1917,6 +2152,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1928,13 +2165,13 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../USER/Inc/lcdfont.h)(0x6A44D5FD)
-F (..\USER\Src\sd.c)(0x6A451B07)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\sd.o --omf_browse agriculture_greenhouse\sd.crf --depend agriculture_greenhouse\sd.d)
-I (../USER/Inc/sd.h)(0x6A44D636)
+I (../USER/Inc/lcdfont.h)(0x6A4C5349)
+F (..\USER\Src\sd.c)(0x6A4C5638)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\sd.o --omf_browse agriculture_greenhouse\sd.crf --depend agriculture_greenhouse\sd.d)
+I (../USER/Inc/sd.h)(0x6A4C5656)
 I (../Core/Inc/sdio.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -1963,6 +2200,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -1998,10 +2237,10 @@ I (../FATFS/Target/sd_diskio.h)(0x6A44D4A9)
 I (../USER/Inc/lcd.h)(0x6A450CF5)
 I (../USER/Inc/touch.h)(0x6A44D64D)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-F (..\USER\Src\ss_rtc.c)(0x6A44DDBD)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\ss_rtc.o --omf_browse agriculture_greenhouse\ss_rtc.crf --depend agriculture_greenhouse\ss_rtc.d)
-I (../USER/Inc/ss_rtc.h)(0x6A44D646)
+F (..\USER\Src\ss_rtc.c)(0x6A4CEE52)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\ss_rtc.o --omf_browse agriculture_greenhouse\ss_rtc.crf --depend agriculture_greenhouse\ss_rtc.d)
+I (../USER/Inc/ss_rtc.h)(0x6A4A11E9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2030,6 +2269,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2041,14 +2282,14 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../USER/Inc/lcd_draw.h)(0x6A450D41)
+I (../USER/Inc/lcd_draw.h)(0x6A4CED42)
 F (..\USER\Src\touch.c)(0x6A44D7DA)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\touch.o --omf_browse agriculture_greenhouse\touch.crf --depend agriculture_greenhouse\touch.d)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (../USER/Inc/lcd.h)(0x6A450CF5)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2077,6 +2318,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2086,14 +2329,14 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
-I (../USER/Inc/lcd_draw.h)(0x6A450D41)
+I (../USER/Inc/lcd_draw.h)(0x6A4CED42)
 I (../USER/Inc/touch.h)(0x6A44D64D)
 I (../USER/Inc/24cxx.h)(0x69CA7F1D)
 F (..\USER\Src\lcd.c)(0x6A450D20)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\lcd.o --omf_browse agriculture_greenhouse\lcd.crf --depend agriculture_greenhouse\lcd.d)
 I (../USER/Inc/lcd.h)(0x6A450CF5)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2122,6 +2365,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2133,11 +2378,86 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
 I (../USER/Inc/lcd_ex.h)(0x6A450D16)
-F (..\USER\Src\sensor_data.c)(0x6A451AE0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\sensor_data.o --omf_browse agriculture_greenhouse\sensor_data.crf --depend agriculture_greenhouse\sensor_data.d)
-I (../USER/Inc/sensor_data.h)(0x6A451851)
-I (../Core/Inc/main.h)(0x6A44DB72)
+F (..\USER\Src\sensor_data.c)(0x6A4C67BA)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\sensor_data.o --omf_browse agriculture_greenhouse\sensor_data.crf --depend agriculture_greenhouse\sensor_data.d)
+I (../USER/Inc/sensor_data.h)(0x6A4B4F31)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x69478F9A)
+I (../Core/Inc/FreeRTOSConfig.h)(0x6A451495)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x69478F9B)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x69478F9A)
+I (../USER/Inc/ss_rtc.h)(0x6A4A11E9)
+I (../USER/Inc/sd.h)(0x6A4C5656)
+I (../Core/Inc/sdio.h)(0x6A44D4A9)
+I (../FATFS/App/fatfs.h)(0x6A44D4A9)
+I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x69478F9A)
+I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
+I (../FATFS/Target/bsp_driver_sd.h)(0x6A44D4A9)
+I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x69478F9A)
+I (../FATFS/Target/sd_diskio.h)(0x6A44D4A9)
+I (../USER/Inc/dht.h)(0x6A49FD0C)
+I (../USER/Inc/BH1750.h)(0x6A48A813)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdlib.h)(0x60252374)
+F (..\USER\Src\cloud_sync.c)(0x6A4BADDB)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\cloud_sync.o --omf_browse agriculture_greenhouse\cloud_sync.crf --depend agriculture_greenhouse\cloud_sync.d)
+F (..\USER\Src\esp8266.c)(0x6A4CFE64)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\esp8266.o --omf_browse agriculture_greenhouse\esp8266.crf --depend agriculture_greenhouse\esp8266.d)
+I (../USER/Inc/esp8266.h)(0x6A4CFE6B)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2166,6 +2486,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2176,12 +2498,9 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
-I (../FATFS/App/fatfs.h)(0x6A44D4A9)
-I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
-I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x69478F9A)
-I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
-I (../FATFS/Target/bsp_driver_sd.h)(0x6A44D4A9)
-I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x69478F9A)
+I (../Core/Inc/usart.h)(0x6A45BAA2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdlib.h)(0x60252374)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x69478F9A)
 I (../Core/Inc/FreeRTOSConfig.h)(0x6A451495)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x69478F9A)
@@ -2191,17 +2510,374 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x69478F9A)
-I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x69478F9A)
+I (../USER/Inc/sensor_data.h)(0x6A4B4F31)
+I (../USER/Inc/system_config.h)(0x6A4CBAD6)
+I (../USER/Inc/SG90.h)(0x6A4B0E16)
+I (../USER/Inc/motor.h)(0x6A4B0F1A)
+F (..\USER\Src\remote.c)(0x6A48C99E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\remote.o --omf_browse agriculture_greenhouse\remote.crf --depend agriculture_greenhouse\remote.d)
+I (../USER/Inc/remote.h)(0x6A48C8CE)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+I (../Core/Inc/tim.h)(0x6A4710E0)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+F (..\USER\Src\BH1750.c)(0x6A490DA5)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\bh1750.o --omf_browse agriculture_greenhouse\bh1750.crf --depend agriculture_greenhouse\bh1750.d)
+I (../USER/Inc/BH1750.h)(0x6A48A813)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+I (../USER/Inc/iic.h)(0x6A48813C)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+F (..\USER\Src\Motor.c)(0x6A4B0F13)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\motor.o --omf_browse agriculture_greenhouse\motor.crf --depend agriculture_greenhouse\motor.d)
+I (../USER/Inc/Motor.h)(0x6A4B0F1A)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+I (../Core/Inc/tim.h)(0x6A4710E0)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+F (..\USER\Src\SG90.c)(0x6A4B084E)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\sg90.o --omf_browse agriculture_greenhouse\sg90.crf --depend agriculture_greenhouse\sg90.d)
+I (../USER/Inc/SG90.h)(0x6A4B0E16)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+I (../Core/Inc/tim.h)(0x6A4710E0)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+F (..\USER\Src\pic.c)(0x6A4BA2A0)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\pic.o --omf_browse agriculture_greenhouse\pic.crf --depend agriculture_greenhouse\pic.d)
+I (../USER/Inc/pic.h)(0x6A4A147F)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+F (..\USER\Src\auto_control.c)(0x6A4CBF73)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\auto_control.o --omf_browse agriculture_greenhouse\auto_control.crf --depend agriculture_greenhouse\auto_control.d)
+I (../USER/Inc/auto_control.h)(0x6A4C9854)
+I (../USER/Inc/system_config.h)(0x6A4CBAD6)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x69478F9A)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Core/Inc/FreeRTOSConfig.h)(0x6A451495)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x69478F9B)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x69478F9A)
+I (../USER/Inc/sensor_data.h)(0x6A4B4F31)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x69478F9A)
+I (../USER/Inc/SG90.h)(0x6A4B0E16)
+I (../USER/Inc/Motor.h)(0x6A4B0F1A)
+I (../Core/Inc/tim.h)(0x6A4710E0)
+F (..\USER\Src\system_config.c)(0x6A4CBE66)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\system_config.o --omf_browse agriculture_greenhouse\system_config.crf --depend agriculture_greenhouse\system_config.d)
+I (../USER/Inc/system_config.h)(0x6A4CBAD6)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdint.h)(0x6025237E)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x69478F9A)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
+I (../Core/Inc/FreeRTOSConfig.h)(0x6A451495)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h)(0x69478F9B)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/task.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x69478F9A)
+I (../FATFS/App/fatfs.h)(0x6A44D4A9)
+I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x69478F9A)
+I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
+I (../Core/Inc/main.h)(0x6A49126D)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h)(0x69478FF1)
+I (../Drivers/CMSIS/Include/core_cm4.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x69478FF2)
+I (../Drivers/CMSIS/Include/mpu_armv7.h)(0x69478FF2)
+I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio_ex.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_exti.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_adc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h)(0x69478FF1)
+I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stdio.h)(0x60252374)
+I (../FATFS/Target/bsp_driver_sd.h)(0x6A44D4A9)
+I (../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h)(0x69478F9A)
+I (../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x69478F9A)
 I (../FATFS/Target/sd_diskio.h)(0x6A44D4A9)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\string.h)(0x6025237E)
-I (../USER/Inc/ss_rtc.h)(0x6A44D646)
-I (../USER/Inc/sd.h)(0x6A44D636)
-I (../Core/Inc/sdio.h)(0x6A44D4A9)
 F (../Middlewares/Third_Party/FreeRTOS/Source/croutine.c)(0x69478F9A)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O1 -Otime --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\croutine.o --omf_browse agriculture_greenhouse\croutine.crf --depend agriculture_greenhouse\croutine.d)
 I (../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h)(0x69478F9A)
 I (E:\Embeddded\keil\Core\ARM\ARMCC\include\stddef.h)(0x6025237E)
@@ -2349,7 +3025,7 @@ I (../Middlewares/Third_Party/FreeRTOS/Source/include/list.h)(0x69478F9A)
 F (../FATFS/Target/bsp_driver_sd.c)(0x6A44D4A9)(--c99 -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O1 -Otime --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../FATFS/Target -I ../FATFS/App -I ../Middlewares/Third_Party/FatFs/src -I ../USER/Inc --no-multibyte-chars-I.\RTE\_Agriculture_greenhouse-IE:\Embeddded\keil\Pack\ARM\CMSIS\6.1.0\CMSIS\Core\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o agriculture_greenhouse\bsp_driver_sd.o --omf_browse agriculture_greenhouse\bsp_driver_sd.crf --depend agriculture_greenhouse\bsp_driver_sd.d)
 I (../FATFS/Target/bsp_driver_sd.h)(0x6A44D4A9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2378,6 +3054,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2393,9 +3071,9 @@ I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
 I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2424,6 +3102,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2456,9 +3136,9 @@ I (../FATFS/App/fatfs.h)(0x6A44D4A9)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x69478F9A)
 I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2487,6 +3167,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2521,9 +3203,9 @@ I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
 I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2552,6 +3234,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2581,9 +3265,9 @@ F (../Middlewares/Third_Party/FatFs/src/ff.c)(0x69478F9A)(--c99 -c --cpu Cortex-
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x69478F9A)
 I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2612,6 +3296,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2645,9 +3331,9 @@ I (../Middlewares/Third_Party/FatFs/src/diskio.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/integer.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/ff.h)(0x69478F9A)
 I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2676,6 +3362,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)
@@ -2705,9 +3393,9 @@ F (../Middlewares/Third_Party/FatFs/src/option/syscall.c)(0x69478F9A)(--c99 -c -
 I (../Middlewares/Third_Party/FatFs/src/option/../ff.h)(0x69478F9A)
 I (../Middlewares/Third_Party/FatFs/src/option/../integer.h)(0x69478F9A)
 I (../FATFS/Target/ffconf.h)(0x6A44D4A9)
-I (../Core/Inc/main.h)(0x6A44DB72)
+I (../Core/Inc/main.h)(0x6A49126D)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h)(0x69478FF1)
-I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A44DD81)
+I (../Core/Inc/stm32f4xx_hal_conf.h)(0x6A470BE9)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h)(0x69478FF1)
 I (../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h)(0x69478FF1)
@@ -2736,6 +3424,8 @@ I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h)(0x69478FF1)
+I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h)(0x69478FF1)
 I (../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h)(0x69478FF0)

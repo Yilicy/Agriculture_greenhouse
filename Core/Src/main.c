@@ -22,6 +22,7 @@
 #include "adc.h"
 #include "dma.h"
 #include "fatfs.h"
+#include "i2c.h"
 #include "rtc.h"
 #include "sdio.h"
 #include "tim.h"
@@ -34,7 +35,12 @@
 #include "lcd.h"
 #include "lcd_draw.h"
 #include "touch.h"
+#include "esp8266.h"
+#include "remote.h"
+#include "sensor_data.h"
 #include <string.h>
+#include "cloud_sync.h"
+#include "esp8266.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,7 +50,10 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define WIFI_SSID         "hahaha"
+#define WIFI_PASSWORD     "dong00407"
+#define SERVER_IP         "10.17.102.190"
+#define SERVER_PORT       5000
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -67,7 +76,7 @@ void MX_FREERTOS_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-//printf重定义
+// printf重定义
 int fputc(int ch, FILE *f)
 {
 	HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xffff);
@@ -82,6 +91,37 @@ void delay_us(uint32_t us)
   while (__HAL_TIM_GET_COUNTER(&htim3) < us);  // 等待计数完成
   HAL_TIM_Base_Stop(&htim3);  // 停止定时器
 }
+
+void TestQuery(void)
+{
+    uint16_t count;
+    float *data;
+    
+    // ★★★ 查询短日期格式 ★★★
+    data = DataLogger_QueryByType("20260701", DATA_TYPE_TEMP, &count);
+    if (data != NULL) {
+        printf("20260701 温度数据 (%d条):\r\n", count);
+        for (int i = 0; i < count && i < 5; i++) {
+            printf("  %.1f°C\r\n", data[i]);
+        }
+        DataLogger_FreeResult(data);
+    } else {
+        printf("20260701 无温度数据\r\n");
+    }
+    
+    // 查询光照
+    data = DataLogger_QueryByType("20260702", DATA_TYPE_LIGHT, &count);
+    if (data != NULL) {
+        printf("\r\n20260702 光照数据 (%d条):\r\n", count);
+        for (int i = 0; i < count && i < 5; i++) {
+            printf("  %.0f lx\r\n", data[i]);
+        }
+        DataLogger_FreeResult(data);
+    } else {
+        printf("20260702 无光照数据\r\n");
+    }
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -124,8 +164,157 @@ int main(void)
   MX_FATFS_Init();
   MX_RTC_Init();
   MX_USART3_UART_Init();
+  MX_TIM1_Init();
+  MX_I2C1_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
+  // 启动 PWM
+  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_2);
+  __HAL_TIM_SetCompare(&htim12, TIM_CHANNEL_2, 125); // 设置亮度 0-255
 
+  HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_1); // 启动定时器4的PWM输出，通道1用于控制直流电机
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); // 启动定时器2的PWM输出，通道1用于控制SG90舵机
+  __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 150); // 初始化舵机角度为90度
+
+  // LCD初始化
+  lcd_Init();
+
+  // 触摸初始化
+  tp_dev.init();
+
+  // 光照传感器初始化
+  BH1750_Init();
+
+  // 设置ESP8266波特率为921600
+  ESP8266_SendCmd("AT+UART_DEF=921600,8,1,0,0\r\n", "OK", 1000);
+  HAL_Delay(500);
+
+  // 重新初始化USART3为921600
+  huart3.Init.BaudRate = 921600;
+  HAL_UART_Init(&huart3);
+
+  // 初始化
+  ESP8266_SendCmd("AT+RST\r\n", "OK", 2000);
+  HAL_Delay(1500);
+  ESP8266_Init(WIFI_SSID, WIFI_PASSWORD);
+  ESP8266_StartServer(80);
+
+  // ESP8266_SendCmd("AT+RST\r\n", "OK", 3000);
+  // HAL_Delay(2000);
+  // ESP8266_Init(WIFI_SSID, WIFI_PASSWORD);
+
+  // // 启动服务器
+  // ESP8266_SendCmd("AT+CIPSERVER=1,80\r\n", "OK", 2000);
+  // printf("服务器已启动, IP: 10.17.102.247\r\n");
+
+    // int count = 0;
+    // while (1)
+    // {
+    //     // ===== 1. 检查是否有队友指令 =====
+    // if (USART3_RX_STA & 0x8000)
+    // {
+    //   char *p = strstr(USART3_RX_BUF, "+IPD,");
+    //     if (p && strstr(p, "GET /control"))
+    // {
+    //     printf("\r\n===== 收到指令 =====\r\n");
+        
+    //     // 1. 解析 link_id
+    //     int link_id = 0;
+    //     sscanf(p, "+IPD,%d,", &link_id);
+        
+    //     // 2. 构造响应体 (Body)
+    //     char body[] = "{\"status\":\"ok\"}";
+        
+    //     // 3. 构造完整的 HTTP 响应头 + 响应体
+    //     // 注意：这里必须包含 Content-Length，且换行符必须是 \r\n
+    //     char http_response[256];
+    //     int body_len = strlen(body);
+        
+    //     sprintf(http_response, 
+    //         "HTTP/1.1 200 OK\r\n"
+    //         "Content-Type: application/json\r\n"
+    //         "Content-Length: %d\r\n" 
+    //         "Connection: close\r\n"
+    //         "\r\n"             // 空行，分隔头部和主体
+    //         "%s",              // 放入 Body
+    //         body_len, body
+    //     );
+
+    //     // 4. 计算准确的发送长度 (不包含字符串结尾的 \0)
+    //     int total_len = strlen(http_response);
+
+    //     // 5. 发送 AT 指令告知长度
+    //     char cmd[64];
+    //     sprintf(cmd, "AT+CIPSEND=%d,%d\r\n", link_id, total_len);
+    //     HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 1000);
+        
+    //     // 【关键修改】增加延时，等待模块准备就绪 (建议 200ms 以上)
+    //     HAL_Delay(300); 
+        
+    //     // 6. 发送实际的 HTTP 数据
+    //     HAL_UART_Transmit(&huart3, (uint8_t*)http_response, total_len, 1000);
+        
+    //     // 7. 等待数据发送完毕，再关闭连接 (防止数据被截断)
+    //     HAL_Delay(200); 
+        
+    //     // 8. 关闭连接
+    //     sprintf(cmd, "AT+CIPCLOSE=%d\r\n", link_id);
+    //     HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 1000);
+        
+    //     printf("已回复 200 OK (Len:%d)\r\n", total_len);
+    //     printf("==================\r\n\r\n");
+    // }
+    //     USART3_RX_STA = 0;
+    //     memset(USART3_RX_BUF, 0, RX_BUFFER_SIZE);
+    // }
+      
+    //   // ===== 2. 上传数据（用ID 4）=====
+    //   ESP8266_SendCmd("AT+CIPCLOSE=4\r\n", NULL, 500);
+    //   HAL_Delay(200);
+      
+    //   char cmd[128];
+    //   sprintf(cmd, "AT+CIPSTART=4,\"TCP\",\"%s\",%d\r\n", SERVER_IP, SERVER_PORT);
+    //   if (ESP8266_SendCmd(cmd, "OK", 5000) == ESP_OK)
+    //   {
+    //       char json[64];
+    //       sprintf(json, "{\"temp\":30.3,\"humid\":64,\"light\":18.4}");
+          
+    //       char http_req[512];
+    //       sprintf(http_req,
+    //           "POST /api/hardware/init HTTP/1.1\r\n"
+    //           "Host: %s:%d\r\n"
+    //           "Content-Type: application/json\r\n"
+    //           "Content-Length: %d\r\n"
+    //           "Connection: close\r\n"
+    //           "\r\n"
+    //           "%s",
+    //           SERVER_IP, SERVER_PORT, (int)strlen(json), json);
+          
+    //       int len = strlen(http_req);
+    //       sprintf(cmd, "AT+CIPSEND=4,%d\r\n", len);
+          
+    //       USART3_RX_STA = 0;
+    //       memset(USART3_RX_BUF, 0, RX_BUFFER_SIZE);
+    //       HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 1000);
+          
+    //       uint32_t t = HAL_GetTick();
+    //       while (HAL_GetTick() - t < 2000)
+    //       {
+    //           if (USART3_RX_STA & 0x8000 && strstr(USART3_RX_BUF, ">")) break;
+    //           HAL_Delay(10);
+    //       }
+          
+    //       HAL_UART_Transmit(&huart3, (uint8_t*)http_req, len, 3000);
+    //       HAL_Delay(200);
+          
+    //       printf("上传%d: %s\r\n", count, json);
+          
+    //       ESP8266_SendCmd("AT+CIPCLOSE=4\r\n", NULL, 500);
+    //   }
+      
+    //   count++;
+    //   HAL_Delay(2000);
+    // }
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in cmsis_os2.c) */

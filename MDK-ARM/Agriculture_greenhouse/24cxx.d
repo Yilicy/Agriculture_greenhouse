@@ -32,6 +32,8 @@ agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h
+agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h
+agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h
@@ -41,3 +43,5 @@ agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+agriculture_greenhouse\24cxx.o: ../Core/Inc/main.h
+agriculture_greenhouse\24cxx.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdio.h

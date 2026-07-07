@@ -117,8 +117,18 @@ void LCD_DrawLine(uint16_t x,uint16_t y,uint16_t x_end,uint16_t y_end,uint16_t c
 	}
 }
 
+// 画矩形
+void lcd_draw_rectangle(uint16_t x,uint16_t y,uint16_t wide,uint16_t height,uint16_t color)
+{
+	LCD_DrawLine(x,y,x+wide,y,color);
+	LCD_DrawLine(x+wide,y,x+wide,y+height,color);
+	LCD_DrawLine(x,y,x,y+height,color);
+	LCD_DrawLine(x,y+height,x+wide,y+height,color);
+
+}
+
 //显示单个字符
-void lcd_show_char(uint16_t x, uint16_t y, char chr, uint8_t size,uint16_t color, uint16_t back_color)
+void lcd_show_char(uint16_t x, uint16_t y, char chr, uint8_t size,uint16_t color,uint16_t back_color)
 {
     uint8_t i, j,temp;
 	uint16_t y0=y,x0=x;
@@ -206,7 +216,7 @@ void lcd_show_char(uint16_t x, uint16_t y, char chr, uint8_t size,uint16_t color
 }
 
 //显示字符串
-void lcd_show_string(uint16_t x, uint16_t y,uint8_t size, char *p, uint16_t color, uint16_t back_color)
+void lcd_show_string(uint16_t x, uint16_t y,uint8_t size, char *p, uint16_t color,uint16_t back_color)
 {
     uint16_t x0 = x;
 
@@ -251,30 +261,30 @@ void lcd_show_circle(uint16_t x,uint16_t y,uint16_t r,uint16_t color)
 }
 
 //显示中文字符串
-void lcd_showchinese(uint16_t x,uint16_t y,int8_t sizey,const char *s,uint16_t color, uint16_t back_color)
+void lcd_showchinese(uint16_t x,uint16_t y,int8_t sizey,const char *s,uint16_t color,uint16_t back_color)
 {
 	uint16_t num;
 	while(*s!=0)
 	{
-		if(sizey==12){
-			for(int i=0;i<sizeof(tfont12)/sizeof(typFNT_GB12);i++){
-				if(memcmp(font_labels[i], s, 3) == 0){
-					num=i;
-					break;
-				}
-			}
-			LCD_ShowChinese(x,y,num,sizey,color,back_color);
-		}
-		else if(sizey==16) {
-			for(int i=0;i<sizeof(tfont16)/sizeof(typFNT_GB16);i++){
-				if(memcmp(font_labels[i], s, 3) == 0){
-					num=i;
-					break;
-				}
-			}
-			LCD_ShowChinese(x,y,num,sizey,color,back_color);
-		}
-		else if(sizey==24)
+		// if(sizey==12){
+		// 	for(int i=0;i<sizeof(tfont12)/sizeof(typFNT_GB12);i++){
+		// 		if(memcmp(font_labels[i], s, 3) == 0){
+		// 			num=i;
+		// 			break;
+		// 		}
+		// 	}
+		// 	LCD_ShowChinese(x,y,num,sizey,color);
+		// }
+		// else if(sizey==16) {
+		// 	for(int i=0;i<sizeof(tfont16)/sizeof(typFNT_GB16);i++){
+		// 		if(memcmp(font_labels[i], s, 3) == 0){
+		// 			num=i;
+		// 			break;
+		// 		}
+		// 	}
+		// 	LCD_ShowChinese(x,y,num,sizey,color);
+		// }
+		if(sizey==24)
 		{
 			for(int i=0;i<sizeof(tfont24)/sizeof(typFNT_GB24);i++){
 				if(memcmp(font_labels[i], s, 3) == 0){
@@ -301,7 +311,7 @@ void lcd_showchinese(uint16_t x,uint16_t y,int8_t sizey,const char *s,uint16_t c
 }
 
 /* 显示单个汉字 */
-void LCD_ShowChinese(uint16_t x,uint16_t y,uint8_t num,uint16_t sizey,uint16_t color, uint16_t back_color)
+void LCD_ShowChinese(uint16_t x,uint16_t y,uint8_t num,uint16_t sizey,uint16_t color,uint16_t back_color)
 {
 	uint8_t i,j;
 	uint16_t TypefaceNum; //字符所占字节数
@@ -314,33 +324,33 @@ void LCD_ShowChinese(uint16_t x,uint16_t y,uint8_t num,uint16_t sizey,uint16_t c
 	{
 		for(j=0;j<8;j++)
 		{
-			if(sizey==12){
-				if(tfont12[num].Msk[i]&(0x01<<j))	
-					LCD_DrawPoint(x,y,color);
-				else
-					LCD_DrawPoint(x,y,back_color);
-				x++;
-				if((x-x0)==sizey)
-				{
-					x=x0;
-					y++;
-					break;
-				}
-			}
-			else if(sizey==16){
-				if(tfont16[num].Msk[i]&(0x01<<j))	
-					LCD_DrawPoint(x,y,color);
-				else
-					LCD_DrawPoint(x,y,back_color);
-				x++;
-				if((x-x0)==sizey)
-				{
-					x=x0;
-					y++;
-					break;
-				}
-			}
-			else if(sizey==24){
+			// if(sizey==12){
+			// 	if(tfont12[num].Msk[i]&(0x01<<j))	
+			// 		LCD_DrawPoint(x,y,color);
+			// 	// else
+			// 	// 	LCD_DrawPoint(x,y,back_color);
+			// 	x++;
+			// 	if((x-x0)==sizey)
+			// 	{
+			// 		x=x0;
+			// 		y++;
+			// 		break;
+			// 	}
+			// }
+			// else if(sizey==16){
+			// 	if(tfont16[num].Msk[i]&(0x01<<j))	
+			// 		LCD_DrawPoint(x,y,color);
+			// 	// else
+			// 	// 	LCD_DrawPoint(x,y,back_color);
+			// 	x++;
+			// 	if((x-x0)==sizey)
+			// 	{
+			// 		x=x0;
+			// 		y++;
+			// 		break;
+			// 	}
+			// }
+			if(sizey==24){
 				if(tfont24[num].Msk[i]&(0x01<<j))	
 					LCD_DrawPoint(x,y,color);
 				else
@@ -393,20 +403,20 @@ static uint16_t caculate(uint16_t data,uint8_t *digits)
 }
 
 /* 显示数字 */
-void lcd_shownum(uint16_t x,uint16_t y,uint8_t sizey,uint16_t num,uint16_t color, uint16_t back_color)
+void lcd_shownum(uint16_t x,uint16_t y,uint8_t sizey,uint16_t num,uint16_t color)
 {
 	uint8_t digit[10];
 	uint16_t len=caculate(num,digit);
 	for(int i=len-1;i>=0;i--)
 	{
 		char ch=digit[i]+'0';
-		lcd_show_char(x,y,ch,sizey,color,back_color);
+		lcd_show_char(x,y,ch,sizey,color,WHITE);
 		x+=(sizey/2);
 	}
 }
 
 /* 显示图片 */
-void lcd_showpicture(uint16_t x,uint16_t y,uint16_t width,uint16_t length,uint8_t pic[])
+void lcd_showpicture(uint16_t x,uint16_t y,uint16_t width,uint16_t length, const uint8_t pic[])
 {
 	uint16_t i,j;
 	uint32_t k=0;
@@ -484,22 +494,44 @@ void update_time_display(uint16_t x, uint16_t y, uint8_t size, char *time_str)
     
     // 检查小时是否变化
     if(time_str[0] != last_time[0] || time_str[1] != last_time[1]) {
-        lcd_show_char(x, y, time_str[0], size, YELLOW, BLACK);
-        lcd_show_char(x + char_width, y, time_str[1], size, YELLOW, BLACK);
-		lcd_show_char(x + 2*char_width,y,':',size,YELLOW,BLACK);
+        lcd_show_char(x, y, time_str[0], size, 0x0140,WHITE);
+        lcd_show_char(x + char_width, y, time_str[1], size, 0x0140,WHITE);
+		lcd_show_char(x + 2*char_width,y,':',size,0x0140,WHITE);
     }
     
     // 检查分钟是否变化
     if(time_str[3] != last_time[3] || time_str[4] != last_time[4]) {
-        lcd_show_char(x + 3*char_width, y, time_str[3], size, YELLOW, BLACK);
-        lcd_show_char(x + 4*char_width, y, time_str[4], size, YELLOW, BLACK);
-		lcd_show_char(x + 5*char_width,y,':',size,YELLOW,BLACK);
+        lcd_show_char(x + 3*char_width, y, time_str[3], size, 0x0140,WHITE);
+        lcd_show_char(x + 4*char_width, y, time_str[4], size, 0x0140,WHITE);
+		lcd_show_char(x + 5*char_width,y,':',size,0x0140,WHITE);
     }
     
     // 检查秒是否变化
     if(time_str[6] != last_time[6] || time_str[7] != last_time[7]) {
-        lcd_show_char(x + 6*char_width, y, time_str[6], size, YELLOW, BLACK);
-        lcd_show_char(x + 7*char_width, y, time_str[7], size, YELLOW, BLACK);
+        lcd_show_char(x + 6*char_width, y, time_str[6], size, 0x0140,WHITE);
+        lcd_show_char(x + 7*char_width, y, time_str[7], size, 0x0140,WHITE);
+    }
+    
+    strcpy(last_time, time_str);
+}
+
+//更新时间函数
+void update_time(uint16_t x, uint16_t y, uint8_t size, char *time_str)
+{
+    static char last_time[16] = "";
+    uint8_t char_width = size/2;
+    
+    // 检查小时是否变化
+    if(time_str[0] != last_time[0] || time_str[1] != last_time[1]) {
+        lcd_show_char(x, y, time_str[0], size, 0x0140,WHITE);
+        lcd_show_char(x + char_width, y, time_str[1], size, 0x0140,WHITE);
+		lcd_show_char(x + 2*char_width,y,':',size,0x0140,WHITE);
+    }
+    
+    // 检查分钟是否变化
+    if(time_str[3] != last_time[3] || time_str[4] != last_time[4]) {
+        lcd_show_char(x + 3*char_width, y, time_str[3], size, 0x0140,WHITE);
+        lcd_show_char(x + 4*char_width, y, time_str[4], size, 0x0140,WHITE);
     }
     
     strcpy(last_time, time_str);

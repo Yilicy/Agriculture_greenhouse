@@ -30,6 +30,8 @@ agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/
 agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h
 agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h
+agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h
+agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h
 agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 agriculture_greenhouse\stm32f4xx_hal_rtc.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h

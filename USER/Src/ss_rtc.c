@@ -189,15 +189,15 @@ void Lender_display(SS_RTC_Time_t *TIME)
     for(int i=1;i<=mon_table[TIME->month-1];i++)
     {
         if(i<10)
-            lcd_shownum(x+8,y,32,i,LIGHTBLUE,BLACK);
+            lcd_shownum(x+8,y,32,i,LIGHTBLUE);
         else
-            lcd_shownum(x,y,32,i,LIGHTBLUE,BLACK);
+            lcd_shownum(x,y,32,i,LIGHTBLUE);
         if(i==TIME->day){
             lcd_fill_circle(x+16,y+16,22,BLUE);
             if(i<10)
-                lcd_shownum(x+8,y,32,i,WHITE,BLUE);
+                lcd_shownum(x+8,y,32,i,WHITE);
             else
-                lcd_shownum(x,y,32,i,WHITE,BLUE);
+                lcd_shownum(x,y,32,i,WHITE);
         }
         x+=45;
         if(x>300)

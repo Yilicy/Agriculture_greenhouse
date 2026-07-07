@@ -31,6 +31,8 @@ agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal
 agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h
 agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h
+agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h
+agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h
 agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 agriculture_greenhouse\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h
@@ -66,6 +68,7 @@ agriculture_greenhouse\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_
 agriculture_greenhouse\main.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
 agriculture_greenhouse\main.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
 agriculture_greenhouse\main.o: ../FATFS/Target/sd_diskio.h
+agriculture_greenhouse\main.o: ../Core/Inc/i2c.h
 agriculture_greenhouse\main.o: ../Core/Inc/rtc.h
 agriculture_greenhouse\main.o: ../Core/Inc/sdio.h
 agriculture_greenhouse\main.o: ../Core/Inc/tim.h
@@ -75,4 +78,11 @@ agriculture_greenhouse\main.o: ../Core/Inc/fsmc.h
 agriculture_greenhouse\main.o: ../USER/Inc/lcd.h
 agriculture_greenhouse\main.o: ../USER/Inc/lcd_draw.h
 agriculture_greenhouse\main.o: ../USER/Inc/touch.h
+agriculture_greenhouse\main.o: ../USER/Inc/esp8266.h
 agriculture_greenhouse\main.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\string.h
+agriculture_greenhouse\main.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdlib.h
+agriculture_greenhouse\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+agriculture_greenhouse\main.o: ../USER/Inc/remote.h
+agriculture_greenhouse\main.o: ../USER/Inc/sensor_data.h
+agriculture_greenhouse\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+agriculture_greenhouse\main.o: ../USER/Inc/cloud_sync.h

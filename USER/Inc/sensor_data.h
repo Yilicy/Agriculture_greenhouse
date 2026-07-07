@@ -1,90 +1,41 @@
-#ifndef __SENSOR_DATA_H
-#define __SENSOR_DATA_H
+#ifndef SENSOR_DATA_H
+#define SENSOR_DATA_H
 
-#include "main.h"
-#include "fatfs.h"
 #include <stdint.h>
-#include <string.h>
-#include <stdio.h>
+#include "main.h"
+#include "cmsis_os.h"
 
-/**
- * @brief 存储间隔（小时）
- * @note  默认2小时，可修改为1,3,4,6,8,12等
- *        修改后存储时间点自动变化
- */
-#define LOGGER_INTERVAL_HOURS   2
+// 数据类型枚举
+typedef enum {
+    DATA_TYPE_TEMP = 0,
+    DATA_TYPE_HUMI = 1,
+    DATA_TYPE_LIGHT = 2
+} DataType_t;
 
-/**
- * @brief 存储触发分钟（0=整点）
- * @note  默认0，可修改为30（每小时的30分触发）
- */
-#define LOGGER_TRIGGER_MINUTE   0
-
-/**
- * @brief 数据文件保存路径
- */
-#define DATA_DIR                "0:/DATA"
-#define DATA_FILE_EXT           ".csv"
-
-/**
- * @brief 单条数据最大长度（时间+3个数值）
- */
-#define LOGGER_LINE_MAX         64
-
-/**
- * @brief 查询返回缓冲区大小（一天最多24条数据）
- * @note  24小时/间隔小时 + 1行表头 + 预留
- */
-#define LOGGER_BUFFER_SIZE      (24 / LOGGER_INTERVAL_HOURS * LOGGER_LINE_MAX + 128)
-
-/**
- * @brief 环境数据点
- */
 typedef struct {
-    float temperature;      /* 温度（摄氏度） */
-    float humidity;         /* 湿度（百分比） */
-    uint16_t light;         /* 光照强度（ADC值或Lux） */
-} EnvData_t;
+    float temperature;   // 温度
+    uint8_t humidity;    // 湿度
+    float light;         // 光照
+    uint32_t timestamp;  // 采集时间戳（用于判断数据是否过期）
+} SensorData_t;
 
-/**
- * @brief 数据记录模块初始化
- * @retval 0:成功, 其他:失败
- */
-uint8_t data_logger_init(void);
+// 全局变量声明
+extern SensorData_t g_sensor_data;
+extern uint8_t g_sensor_valid;  // 0=无效, 1=有效
 
-/**
- * @brief 更新环境数据（外部定时调用）
- * @param data 环境数据指针
- * @retval 1:已存储, 0:未存储（未到记录时间点）
- * @note  调用频率建议每秒1次，内部自动判断是否到存储时间
- */
-uint8_t data_logger_update(EnvData_t *data);
+// 传感器函数
+void Sensor_Update();
 
-/**
- * @brief 按日期查询数据（给前端对接）
- * @param date_str  日期字符串，格式 "YYYY-MM-DD"，如 "2026-07-01"
- * @param buffer    输出缓冲区
- * @param buf_size  缓冲区大小
- * @retval 1:查询成功（buffer中有数据）, 0:查询失败/无数据
- * @note   buffer中为CSV格式数据：
- *         time,temperature,humidity,light
- *         00:00,25.3,60.5,320
- *         02:00,26.1,58.2,280
- *         ...
- */
-uint8_t data_logger_get_data(const char *date_str, char *buffer, uint16_t buf_size);
+// 数据记录API
+uint8_t DataLogger_Init(void);
 
-/**
- * @brief 获取当前存储状态
- * @retval 1:已存储过（有数据文件）, 0:从未存储
- */
-uint8_t data_logger_has_data(void);
+void DataLogger_StoreCurrent(void);
+float* DataLogger_QueryByType(const char *date, DataType_t type, uint16_t *out_count);
+void DataLogger_FreeResult(float *data);
+uint16_t DataLogger_GetCount(const char *date);
+void DataLogger_CleanOldFiles(void);
 
-/**
- * @brief 手动触发存储（调试用或紧急存储）
- * @param data 环境数据指针
- * @retval 0:成功, 其他:失败
- */
-uint8_t data_logger_force_store(EnvData_t *data);
+// ===================== 测试函数 =====================
+void DataLogger_GenerateTestData(void);
 
-#endif /* __SENSOR_DATA_H */
+#endif /* SENSOR_DATA_H */

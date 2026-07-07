@@ -1,12 +1,7 @@
-/* ss_rtc.h */
-#ifndef INC_SS_RTC_H_
-#define INC_SS_RTC_H_
+#ifndef _SS_RTC_H_
+#define _SS_RTC_H_
 
 #include "stm32f4xx_hal.h"
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 extern const char *weekday_names[];
 
@@ -33,8 +28,4 @@ uint8_t day_of_week(int year,int month,int day);
 uint8_t Is_Leap_Year(uint16_t year);
 void Lender_display(SS_RTC_Time_t *TIME);
 
-#ifdef __cplusplus
-}
-#endif
-
-#endif /* INC_SS_RTC_H_ */
+#endif /* _SS_RTC_H_ */

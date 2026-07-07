@@ -22,16 +22,29 @@ Dialog DLL:      TCM.DLL V1.53.0.0
  
 <h2>Project:</h2>
 d:\School\Code\project\Agriculture_greenhouse\MDK-ARM\Agriculture_greenhouse.uvprojx
-Project File Date:  07/01/2026
+Project File Date:  07/06/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'E:\Embeddded\keil\Core\ARM\ARMCC\Bin'
 Build target 'Agriculture_greenhouse'
-compiling sd.c...
+compiling esp8266.c...
+../USER/Inc/sensor_data.h(27): warning:  #1295-D: Deprecated declaration Sensor_Update - give arg types
+  void Sensor_Update();
+..\USER\Src\esp8266.c: 1 warning, 0 errors
+compiling main.c...
+../USER/Inc/sensor_data.h(27): warning:  #1295-D: Deprecated declaration Sensor_Update - give arg types
+  void Sensor_Update();
+../Core/Src/main.c(186): warning:  #223-D: function "BH1750_Init" declared implicitly
+    BH1750_Init();
+../Core/Src/main.c: 2 warnings, 0 errors
+compiling freertos.c...
+../USER/Inc/sensor_data.h(27): warning:  #1295-D: Deprecated declaration Sensor_Update - give arg types
+  void Sensor_Update();
+../Core/Src/freertos.c: 1 warning, 0 errors
 linking...
-Program Size: Code=54620 RO-data=19204 RW-data=412 ZI-data=43892  
+Program Size: Code=68452 RO-data=326908 RW-data=424 ZI-data=44752  
 FromELF: creating hex file...
-"Agriculture_greenhouse\Agriculture_greenhouse.axf" - 0 Error(s), 0 Warning(s).
+"Agriculture_greenhouse\Agriculture_greenhouse.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,7 +67,7 @@ Package Vendor: Keil
 
    * Component: ARM::CMSIS:CORE:6.1.0
       Include file:  CMSIS\Core\Include\tz_context.h
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

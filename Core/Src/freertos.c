@@ -34,13 +34,20 @@
 #include "dht.h"
 #include "lcd.h"
 #include "lcd_draw.h"
+#include "pic.h"
 #include "gpio.h"
 #include "adc.h"
 #include "touch.h"
 #include <string.h> 
 #include "sd.h"
 #include "ss_rtc.h"
+#include "SG90.h"
+#include "BH1750.h"
+#include "Motor.h"
+#include "esp8266.h"
 #include "sensor_data.h"
+#include "auto_control.h"
+#include "system_config.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -52,10 +59,9 @@
 /* USER CODE BEGIN PD */
 #define STORAGE_LATENCY   1800000     // 30分钟 = 1800000ms
 #define MUTEX_TIMEOUT     pdMS_TO_TICKS(50)     // 互斥锁信号量获取超时50ms
-float adc_history=0;      // 上次ADC采样值，用于亮度调节历史比较
-int flag = 1;
-static uint32_t task_watchdog[3]={0};         // 添加任务状态监控
-EnvData_t env_data;  /* 环境数据变量 */
+
+float adc_history=0;     // 上次ADC采样值，用于亮度调节历史比较
+static uint32_t task_watchdog[7]={0};     // 添加任务状态监控
 extern const char *weekday_names[];
 /* USER CODE END PD */
 
@@ -64,38 +70,36 @@ extern const char *weekday_names[];
 TaskHandle_t defaultTaskHandle = NULL;      // 默认任务（LED闪烁）
 TaskHandle_t pwmDACTaskHandle = NULL;       // 自动调节屏幕亮度
 TaskHandle_t screenTaskHandle = NULL;       // 屏幕显示
-TaskHandle_t touchHandle = NULL;            // 触摸任务
+TaskHandle_t touchHandle = NULL;            // 触摸
+TaskHandle_t SensorHandle = NULL;           // 数据采集
+TaskHandle_t autocontrolHandle = NULL;      // 窗帘控制
+TaskHandle_t cloudsyncHandle = NULL;        // 上传前端
+TaskHandle_t espTaskHandle = NULL;
 TaskHandle_t watchdogTaskHandle = NULL;     // 看门狗监控任务句柄
 
-SemaphoreHandle_t spi_semaphore = NULL;           // SPI完成信号量
 extern SemaphoreHandle_t MutexHandle = NULL;      // 互斥信号量（保护共享资源）
-TimerHandle_t TimerHandle = NULL;             // 定时器
 QueueHandle_t Queueretouch = NULL;                // 队列（存储触摸屏幕次数）
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-void TouchTask(void *argument);           // 触摸任务（检测屏幕触摸切换页面）
-void LightControlTask(void *argument);    // 自动控制光亮任务（根据环境光）
-void ScreenTask(void *argument);          // 屏幕显示任务
-void WatchdogTask(void *argument);        // 看门狗监控任务（监控各任务状态，重启系统）
-void SensorData_Task(void *pvParameters); // 传感器数据存储任务
+void TouchTask(void *argument);             // 触摸任务（检测屏幕触摸切换页面）
+void LightControlTask(void *argument);      // 自动控制光亮任务（根据环境光）
+void ScreenTask(void *argument);            // 屏幕显示任务
+void SensorTask(void *argument);            // 采集数据任务
+void AutoControlTask(void *argument);       // 设备控制任务（风扇、舵机、led灯）
+void CloudsyncTask(void *argumnet);         // 上传前端任务
+void ESP8266_Task(void *argument);
+void WatchdogTask(void *argument);          // 看门狗监控任务（监控各任务状态，重启系统）
 /* USER CODE END Variables */
-osThreadId defaultTaskHandle;
+// osThreadId defaultTaskHandle;
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-/**
- * @brief 定时器回调函数 - 30分钟手动模式自动恢复
- * @param xTimer 定时器句柄
- */
-void timer_Callback(TimerHandle_t xTimer)
-{
-  flag =1;// 30存储一次数据
-}
+
 /* USER CODE END FunctionPrototypes */
 
-void StartDefaultTask(void const * argument);
+// void StartDefaultTask(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -104,53 +108,33 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   * @param  None
   * @retval None
   */
-void MX_FREERTOS_Init(void) {
+void MX_FREERTOS_Init(void) 
+{
   /* USER CODE BEGIN Init */
 
-	// 测试RTC初始化
-	char buffer[64];
-	snprintf(buffer, sizeof(buffer), "RTC Initialized\r\n");
-	HAL_UART_Transmit(&huart1, (uint8_t*)buffer, strlen(buffer), HAL_MAX_DELAY);
-
-  HAL_TIM_Base_Start_IT(&htim2); //启动TIM2定时器（用于ADC采样触发）
-  // 启动 PWM
-  HAL_TIM_PWM_Start(&htim12, TIM_CHANNEL_2);
-  __HAL_TIM_SetCompare(&htim12, TIM_CHANNEL_2, 125); // 设置亮度 0-255
-
-  // LCD初始化
-  lcd_Init();
-
-  // 触摸初始化
-  tp_dev.init();
-
-  data_logger_init();  // 初始化数据记录模块
-  
-/* 初始化环境数据（示例，实际从API获取） */
-env_data.temperature = 25.3;
-env_data.humidity = 60.5;
-env_data.light = 320;
-/* 更新数据记录器（内部自动判断是否存储） */
-    data_logger_update(&env_data);
+// /* 更新数据记录器（内部自动判断是否存储） */
+//     data_logger_update(&env_data);
     
-    HAL_Delay(1000);  /* 每秒更新一次 */
+//     HAL_Delay(1000);  /* 每秒更新一次 */
     
-    /* 测试：查询某一天数据 */
-    static uint8_t test_query_flag = 0;
-    if (!test_query_flag) {
-        char buffer[2048];
-        test_query_flag = 1;
-        if (data_logger_get_data("2026-07-01", buffer, sizeof(buffer))) {
-            printf("\r\n=== 查询结果 ===\r\n%s\r\n", buffer);
-        } else {
-            printf("无数据\r\n");
-        }
-    }
+//     /* 测试：查询某一天数据 */
+//     static uint8_t test_query_flag = 0;
+//     if (!test_query_flag) {
+//         char buffer[2048];
+//         test_query_flag = 1;
+//         if (data_logger_get_data("2026-07-01", buffer, sizeof(buffer))) {
+//             printf("\r\n=== 查询结果 ===\r\n%s\r\n", buffer);
+//         } else {
+//             printf("无数据\r\n");
+//         }
+//     }
   /* USER CODE END Init */
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
   // 创建互斥信号量（保护共享资源）
-  MutexHandle = xSemaphoreCreateMutex();  
+  MutexHandle = xSemaphoreCreateMutex();
+  MutexpHandle = xSemaphoreCreateMutex(); 
   /* USER CODE END RTOS_MUTEX */
 
   /* USER CODE BEGIN RTOS_SEMAPHORES */
@@ -159,62 +143,72 @@ env_data.light = 320;
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
-  TimerHandle = xTimerCreate("storage",pdMS_TO_TICKS(STORAGE_LATENCY),pdTRUE,(void *)0,timer_Callback);
-  if(TimerHandle != NULL)
-  {
-    if(xTimerStart(TimerHandle,pdMS_TO_TICKS(10))==pdPASS)
-      printf("Storage latency started (30 minutes)\r\n");
-  }
+
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
   // 创建触摸次数数据队列
   Queueretouch=xQueueCreate(5,sizeof(uint8_t));
+  // 创建ESP8266操作队列（最多缓存10个消息）
+  espQueueHandle = xQueueCreate(10, sizeof(EspMessage_t));
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  // 触摸任务
-  BaseType_t Retouch = xTaskCreate(TouchTask,"touch-TFT",256,(void*)NULL,5,&touchHandle);
-  if(Retouch == pdFALSE)
-    printf("Create touch-TFT task falied! \r\n");
-  else
-    printf("Create touch-TFT task success!\r\n");
+  SystemConfig_Init();
 
-  // 自动亮度控制任务
-  BaseType_t RepwmDAC = xTaskCreate(LightControlTask,"PWM-DAC",256,NULL,4,&pwmDACTaskHandle);
-  if(RepwmDAC == pdFALSE)
-    printf("Create pwm task failed!\r\n");
-  else
-    printf("Create pwm task success!\r\n");
-
-  // 创建传感器数据存储任务（优先级最低，不影响其他任务）
-  BaseType_t ret = xTaskCreate(SensorData_Task, "SensorData", 512, NULL, 1, NULL );
-  if (ret == pdFALSE) {
-    printf("Create SensorData task failed!\r\n");
-  } else {
-    printf("Create SensorData task success!\r\n");
-  }
-  
-  // 屏幕显示任务
-  BaseType_t Rescreen = xTaskCreate(ScreenTask,"screen",1024,NULL,2,&screenTaskHandle);
-  if(Rescreen == pdFALSE)
-    printf("Create screen task falied!\r\n");
-  else
-    printf("Create screen task success!\r\n");
-  
-  // 看门狗监控任务
+  // 看门狗监控（优先级6 - 保证能监控所有任务）
   BaseType_t Rewatchdog = xTaskCreate(WatchdogTask,"wtachdog",256,NULL,1,&watchdogTaskHandle);
   if(Rewatchdog == pdFALSE)
     printf("Create watchdog task failed!\r\n");
-  else
-    printf("Create watchdog task success!\r\n");
+
+  // 触摸任务（优先级5）
+  BaseType_t Retouch = xTaskCreate(TouchTask,"touch-TFT",256,(void*)NULL,5,&touchHandle);
+  if(Retouch == pdFALSE)
+    printf("Create touch-TFT task falied! \r\n");
+  
+  // 屏幕显示（优先级4）
+  BaseType_t Rescreen = xTaskCreate(ScreenTask,"screen",1024,NULL,4,&screenTaskHandle);
+  if(Rescreen == pdFALSE)
+    printf("Create screen task falied!\r\n");
+  
+  // 传感器采集（优先级3）
+  BaseType_t Resensor = xTaskCreate(SensorTask,"Sensor",256,NULL,3,&SensorHandle);
+  if(Resensor == pdFALSE)
+    printf("Create Sensor task failed!\r\n");
+
+  // 自动亮度控制（优先级3）
+  BaseType_t RepwmDAC = xTaskCreate(LightControlTask,"PWM-DAC",256,NULL,3,&pwmDACTaskHandle);
+  if(RepwmDAC == pdFALSE)
+    printf("Create pwm task failed!\r\n");
+
+  // 设备控制（优先级2）
+  BaseType_t Reauto = xTaskCreate(AutoControlTask,"Auto",256,NULL,2,&autocontrolHandle);
+  if(Reauto == pdFALSE)
+    printf("Create Autocontrol task failed!\r\n");
+
+  // 创建控制服务器任务
+  BaseType_t Resesp = xTaskCreate(ESP8266_Task, "esp8266", 512, NULL, 3, &espTaskHandle);
+  if(Resesp == pdFALSE)
+    printf("Create ESP8266 task failed!\r\n");
+
+  // 云端上传（优先级1）
+  BaseType_t Recloud = xTaskCreate(CloudsyncTask,"cloud",1024,NULL,1,&cloudsyncHandle);
+  if(Recloud == pdFALSE)
+    printf("Creat Cloud task faied!\r\n");
+  lcd_showpicture(0, 0, 320, 480, gImage_back);
+
+  // lcd_show_string(10,10,24,"2026-7-5",DARKBLUE);
+  // lcd_show_string(140,10,24,"14:10",0x0140);
+  // lcd_showchinese(25,70,24,"温度", 0x0180);
+  // lcd_show_string(30,110,32,"26.5",DARKBLUE);
+  // lcd_show_string(100,200,32,"890",MID_GREEN);
+  // lcd_show_string(100,200,32,"890",DARK_GREEN);
+  // lcd_show_string(100,200,32,"890",DIM_GREEN);
   /* USER CODE END RTOS_THREADS */
 
 }
@@ -226,16 +220,8 @@ env_data.light = 320;
   * @retval None
   */
 /* USER CODE END Header_StartDefaultTask */
-void StartDefaultTask(void const * argument)
-{
-  /* USER CODE BEGIN StartDefaultTask */
-//   /* Infinite loop */
-//   for(;;)
-//   {
-//     osDelay(1);
-//   }
-  /* USER CODE END StartDefaultTask */
-}
+
+/* USER CODE END StartDefaultTask */
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
@@ -246,13 +232,12 @@ void StartDefaultTask(void const * argument)
 void TouchTask(void *argument)
 {
   uint32_t last_scan = 0;   // 上次扫描时间戳
-  uint16_t start_x = 0;     // 触摸起始坐标
   uint8_t touch_state = 0;  // 0:等待触摸, 1:触摸中, 2:已处理
   uint32_t touch_start_time = 0;  // 触摸开始时间戳
     
   for(;;)
   {
-    vTaskDelayUntil(&last_scan, pdMS_TO_TICKS(20));
+    vTaskDelayUntil(&last_scan, pdMS_TO_TICKS(50));
     task_watchdog[0]++;
 
     tp_dev.scan(0);
@@ -261,7 +246,7 @@ void TouchTask(void *argument)
     if ((tp_dev.sta & TP_PRES_DOWN) && touch_state == 0)
     {
       touch_state = 1;  // 进入触摸中状态
-      start_x = tp_dev.x[0];
+      // start_x = tp_dev.x[0];
       touch_start_time = xTaskGetTickCount();
     }
       
@@ -326,138 +311,256 @@ void LightControlTask(void *argument)
   }
 }
 
-/**
- * @brief 传感器数据存储任务
- * @param pvParameters 无
- * @note 每分钟检查一次，在分钟=00时执行存储
+/*
+ * @brief 设备控制任务
+ * @param argument 无
+ * @note 系统自动控制设备运行状态
  */
-void SensorData_Task(void *pvParameters)
+void AutoControlTask(void *argument)
 {
-    SS_RTC_Time_t time;
-    uint8_t last_minute = 255;  // 记录上一分钟的分钟值
-    TickType_t xLastWakeTime = xTaskGetTickCount();
+  SS_RTC_Time_t time;
+  static uint8_t first_run = 1;
+  
+  // SD卡初始化
+  if (DataLogger_Init() != 1) {
+    printf("[CLOUD] SD卡挂载失败\r\n");
+    SystemConfig_SetDefaults();
+  } else {
+    printf("[CLOUD] SD卡挂载成功\n");
+  }
+    // // 等 ScreenTask 初始化完成
+    // vTaskDelay(pdMS_TO_TICKS(3000));
+    // SystemConfig_Init();
+
+  while (1)
+  {
+    task_watchdog[2]++;
     
-    printf("SensorData_Task 启动\r\n");
-    
-    while (1)
-    {
-        // 获取当前时间
-        SS_RTC_GetTime(&time);
-        
-        // // 检查分钟是否为00，且这一分钟还没存过
-        // if (time.minutes == 0 && last_minute != 0)
-        // {
-        //     // 执行存储操作（小时整点存储）
-        //     SensorData_DoStorage(&time);
-        //     last_minute = 0;
-            
-        //     // 每天0点执行清理（小时=0且分钟=0时）
-        //     if (time.hours == 0 && time.minutes == 0)
-        //     {
-        //         SensorData_CleanOldFiles();
-        //     }
-        // }
-        // else if (time.minutes != 0)
-        // {
-        //     last_minute = time.minutes;  // 更新记录
-        // }
-        
-        // 每10秒检查一次（平衡实时性和CPU占用）
-        vTaskDelay(pdMS_TO_TICKS(10000));
+    // 首次运行：恢复设备状态
+    if (first_run) {
+      Fan_SetLevel(g_sys_config.fan_level);
+      if (g_sys_config.curtain_state) {
+        Curtain_On();
+      } else {
+        Curtain_Off();
+      }
+      printf("[AUTO] 设备状态已恢复\r\n");
+      first_run = 0;
     }
+    
+    SS_RTC_GetTime(&time);
+    if (time.hours == 20 && time.minutes == 0 && time.seconds == 0) {
+      System_AutoRecovery();
+    }
+    AutoControl_All(&g_sys_config);
+    
+    vTaskDelay(pdMS_TO_TICKS(5000));
+  }
+}
+
+/*
+ * @brief 数据采集任务
+ * @param argument 无
+ * @note 1s采集一次
+ */
+void SensorTask(void *argument)
+{
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  printf("[Sensor] 采集任务启动, 1s采集一次\r\n");
+
+  while (1)
+  {
+    // 更新看门狗计数
+    task_watchdog[3]++;
+
+    // 采集传感器
+    Sensor_Update();         // 读取传感器
+    printf("[Sensor] T:%.1f H:%d L:%.1f\r\n", 
+           g_sensor_data.temperature,
+           g_sensor_data.humidity,
+           g_sensor_data.light);
+
+    // 每1秒采集一次
+    vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(1000));
+  }
+}
+
+/*
+ * @brief 上传前端任务
+ * @param argument 无
+ * @note 每10s上传一次数据
+ */
+void CloudsyncTask(void *argument)
+{
+  // 等待高优先级任务完成初始化
+  vTaskDelay(pdMS_TO_TICKS(3000));
+  
+  TickType_t xLastWakeTime = xTaskGetTickCount();
+
+  printf("[CLOUD] 云同步任务启动, 2s上报一次\r\n");
+
+  while (1)
+  {
+    task_watchdog[4]++;
+    
+    // 存储数据到SD卡
+    DataLogger_StoreCurrent();
+    
+    EspMessage_t msg;
+    msg.type = MSG_UPLOAD_DATA;
+    xQueueSend(espQueueHandle, &msg, pdMS_TO_TICKS(10));
+
+    vTaskDelayUntil(&xLastWakeTime, pdMS_TO_TICKS(2000));
+  }
 }
 
 /**
- * @brief 背景切换任务 - 控制LCD显示时间页面或图片页面
+ * @brief ESP8266处理任务
+ */
+void ESP8266_Task(void *argument)
+{
+  EspMessage_t msg;
+  
+  // 调度器已启动，在这里创建
+  dma_tx_done = xSemaphoreCreateBinary();
+  espQueueHandle = xQueueCreate(10, sizeof(EspMessage_t));
+
+  printf("[ESP] UDP任务启动\r\n");
+  
+  while(1)
+  {
+    task_watchdog[6]++;
+    
+    // 1. 先检查指令（不阻塞，有就处理）
+    ESP8266_ProcessRequest();
+    
+    // 2. 再处理上传（有消息就发）
+    if (xQueueReceive(espQueueHandle, &msg, 0) == pdTRUE)
+    {
+      if (msg.type == MSG_UPLOAD_DATA) 
+      {
+        upload_sensor_data();
+      }
+    }
+    vTaskDelay(pdMS_TO_TICKS(50));
+  }
+}
+
+/**
+ * @brief 屏幕显示任务
  * @param argument 任务参数
  */
 void ScreenTask(void *argument)
 {
-  static uint8_t Last_temp=0;   //上一次的读取的温度
-  uint8_t humi=0, temp=0;   //温湿度
-  static uint8_t first_draw=1;
   SS_RTC_Time_t rtc_time;
-  static uint8_t sd_initialized = 0;  // 添加SD卡初始化标志
+  uint8_t fan_laststate=5;
+  uint8_t curtain_laststate=2;
+  uint8_t light_laststate=2;
+  uint16_t temp_history=0;    // 上次温度采样值，用于温度调节历史比较
+  uint16_t humi_history=0;    // 上次湿度采样值，用于湿度调节历史比较
+  uint16_t light_history=0;   // 上次光照采样值，用于光照调节历史比较
+  char humi_str[8];    // 湿度字符串
+  char light_str[16];  // 光照字符串
+  char temp_str[16];   // 温度字符串
 
-  LCD_Clear(BLACK);  // 清屏为黑色
+  // 显示
+  lcd_showchinese(105, 116, 24, "℃", DARKBLUE,WHITE);
+  lcd_show_string(248,116,24,"%RH",DARKBLUE,WHITE);
+  lcd_show_string(182,210,24,"lux",DARKBLUE,WHITE);
+  lcd_showchinese(35,78,24,"温度",BLACK,WHITE);
+  lcd_showchinese(185, 78, 24, "湿度", BLACK,WHITE);
+  lcd_showchinese(120,168,24,"光照",BLACK,WHITE);
+  lcd_showchinese(40,330,24,"风扇",0x0140,WHITE);
+  lcd_showchinese(135,330,24,"卷帘",0x0140,WHITE);
+  lcd_showchinese(222,330,24,"补光灯",0x0140,WHITE);
 
   for(;;)
   {
     vTaskDelay(pdMS_TO_TICKS(200));
 
     // 更新看门狗计数
-    task_watchdog[2]++;
+    task_watchdog[5]++;
 
     SS_RTC_GetTime(&rtc_time);  // 获取当前时间
       
-    // 2. 显示时间和日期
-    char time_str[16];
-    sprintf(time_str, "%02d:%02d:%02d", rtc_time.hours, rtc_time.minutes, rtc_time.seconds);
+    // 显示时间和日期
+    char time_str[16],time_str1[16],data_str[16];
+    sprintf(data_str, "%02d-%2d-%2d", rtc_time.year, rtc_time.month, rtc_time.day);
+    sprintf(time_str1, "%02d:%02d", rtc_time.hours, rtc_time.minutes);
+    sprintf(time_str, "%02d:%02d:%0d", rtc_time.hours, rtc_time.minutes, rtc_time.seconds);
+    sprintf(temp_str, "%.1f", g_sensor_data.temperature);
+    sprintf(humi_str, "%.lf",(float) g_sensor_data.humidity);
+    sprintf(light_str,"%.1f",g_sensor_data.light);
     
-    if(xSemaphoreTake(MutexHandle, pdMS_TO_TICKS(100)) == pdTRUE)
+    // 加互斥锁保护LCD操作
+    if(xSemaphoreTake(MutexHandle, pdMS_TO_TICKS(50)) == pdTRUE)
     {
-      lcd_showchinese(10, 0, 24, weekday_names[rtc_time.weekday % 7], YELLOW,BLACK);  // 显示星期
-      if(first_draw){
-        lcd_show_string(15,40,64,time_str,YELLOW,BLACK);
+      lcd_show_string(10,10,24,data_str,0x0140,WHITE);
+      update_time(135, 10, 24, time_str1);
+      update_time_display(120,450,24,time_str);
+      if(temp_history!=g_sensor_data.temperature){
+        lcd_show_string(30, 110, 32, temp_str, DARKBLUE,WHITE);
+        temp_history=g_sensor_data.temperature;
       }
-      update_time_display(15, 40, 64, time_str);
+      if(humi_history!=g_sensor_data.humidity){
+        lcd_show_string(200, 110, 32, humi_str, DARKBLUE,WHITE);
+        humi_history=g_sensor_data.humidity;
+      }
+      if(light_history!=g_sensor_data.light){
+        lcd_show_string(110, 205, 32, light_str, DARKBLUE,WHITE);
+        light_history=g_sensor_data.light;
+      }
       xSemaphoreGive(MutexHandle);
     }
 
-    // 首次绘制时显示固定UI元素
-    if(first_draw)
-    { 
-      if(xSemaphoreTake(MutexHandle, pdMS_TO_TICKS(100)) == pdTRUE)
-      {
-        // 显示星期几的汉字（一周七天）
-        LCD_DrawLine(0,130,320,130,GRAY);
-        lcd_shownum(0,135,32,rtc_time.month,LIGHTGREEN,BLACK);
-        lcd_showchinese(14,135,32,"月",LIGHTGREEN,BLACK);
-        lcd_shownum(125,135,32,rtc_time.year,LIGHTGREEN,BLACK);
-        lcd_showchinese(190,135,32,"年",LIGHTGREEN,BLACK);
-        lcd_draw_hline(0,165,320,GRAY);
-        lcd_draw_hline(0,166,320,GRAY);
-        lcd_showchinese(1, 170, 32, "一", LIGHTBLUE,BLACK);
-        lcd_showchinese(48, 170, 32, "二", LIGHTBLUE,BLACK);
-        lcd_showchinese(95, 170, 32, "三", LIGHTBLUE,BLACK);
-        lcd_showchinese(142, 170, 32, "四", LIGHTBLUE,BLACK);
-        lcd_showchinese(189, 170, 32, "五", LIGHTBLUE,BLACK);
-        lcd_showchinese(237, 170, 32, "六", LIGHTBLUE,BLACK);
-        lcd_showchinese(284, 170, 32, "日", LIGHTBLUE,BLACK);
-        Lender_display(&rtc_time);  // 显示日历
-        // 首次读取温湿度并显示
-        dht_read_data(&humi, &Last_temp);
-        lcd_draw_hline(0,440,320,GRAY);
-        lcd_draw_hline(0,441,320,GRAY);
-        lcd_showchinese(0, 447, 32, "室内温度", LIGHTGRAY,BLACK);
-        lcd_show_string(129, 447, 32, ":", LIGHTGRAY,BLACK);
-        lcd_shownum(162, 447, 32, Last_temp, WHITE,BLACK);
-        lcd_showchinese(195, 450, 32, "℃", WHITE,BLACK);
-        xSemaphoreGive(MutexHandle);
-      }
-      first_draw = 0;  // 清除首次绘制标志
-    } 
-      
-    // 温湿度更新（每10秒检查一次）
-    static uint32_t last_dht_read = 0;
-    if(xTaskGetTickCount() - last_dht_read >= pdMS_TO_TICKS(10000))
+    if((fan_laststate!= g_sys_config.fan_state) || (curtain_laststate!= g_sys_config.curtain_state) || (light_laststate !=g_sys_config.light_state))
     {
-      last_dht_read = xTaskGetTickCount();
-      
-      dht_read_data(&humi, &temp);
-      if(temp != Last_temp && temp != 0)  // 避免读取出错
+      if(fan_laststate!=g_sys_config.fan_state)
       {
-        Last_temp = temp;
-        if(xSemaphoreTake(MutexHandle, MUTEX_TIMEOUT) == pdTRUE)
+        if(g_sys_config.fan_state)
         {
-          lcd_shownum(162, 447, 32, temp, WHITE, BLACK);
-          xSemaphoreGive(MutexHandle);
+          lcd_draw_rectangle(38,390,50,30,RED);
+          LCD_Fill(38,390,88,420,RED);
+          lcd_showchinese(40,393,24,"关闭",BRRED,RED);
         }
+        else{
+          lcd_draw_rectangle(38,390,50,30,GREEN);
+          LCD_Fill(38,390,88,420,GREEN);
+          lcd_showchinese(40,393,24,"打开",0x0180,GREEN);
+        }
+        fan_laststate=g_sys_config.fan_state;
       }
-    }
-    if(rtc_time.minutes == 0|| rtc_time.minutes == 30)
-    {
-      printf("30");
+      if(curtain_laststate!= g_sys_config.curtain_state)
+      {
+        if(g_sys_config.curtain_state)
+        {
+          lcd_draw_rectangle(133,390,50,30,RED);
+          LCD_Fill(130,390,180,420,RED);
+          lcd_showchinese(135,393,24,"关闭",BRRED,RED);
+        }
+        else{
+          lcd_draw_rectangle(132,390,50,30,GREEN);
+          LCD_Fill(132,390,182,420,GREEN);
+          lcd_showchinese(135,393,24,"打开",0x0180,GREEN);
+        }
+        curtain_laststate=g_sys_config.curtain_state;
+      }
+      if(light_laststate != g_sys_config.light_state)
+      {
+        if(g_sys_config.light_state)
+        {
+          lcd_draw_rectangle(228,390,50,30,RED);
+          LCD_Fill(228,390,278,420,RED);
+          lcd_showchinese(230,393,24,"关闭",BRRED,RED);
+        }
+        else{
+          lcd_draw_rectangle(228,390,50,30,GREEN);
+          LCD_Fill(228,390,278,420,GREEN);
+          lcd_showchinese(230,393,24,"打开",0x0180,GREEN);
+        }
+        light_laststate = g_sys_config.light_state;
+      }
     }
   }
 }
@@ -468,32 +571,42 @@ void ScreenTask(void *argument)
  */
 void WatchdogTask(void *argument)
 {
-  uint32_t last_values[2] = {0};
-  uint32_t stuck_count = 0;
+  uint32_t last_values[7] = {0};
+  uint32_t stuck_count[7] = {0};
   
-  printf("[Watchdog] 看门狗监控任务启动\n");
+  // 初始化所有last_values为当前值，避免初始误判
+  vTaskDelay(pdMS_TO_TICKS(20000));
+  for(int i = 0; i < 7; i++) {
+    last_values[i] = task_watchdog[i];  // 初始化基准值
+  }
   
   for(;;)
   {
-    vTaskDelay(pdMS_TO_TICKS(10000));  // 每10秒检查一次
+    vTaskDelay(pdMS_TO_TICKS(5000));
     
-    for(int i = 0; i < 2; i++)
+    int total_stuck = 0;
+    
+    for(int i = 0; i < 7; i++)
     {
       if(task_watchdog[i] == last_values[i])
       {
-        stuck_count++;
-        printf("[Watchdog] Task %d stuck! (no change for 10s)\n", i);
-        
-        if(stuck_count >= 2) {
-          printf("[Watchdog] System reset!\n");
-          NVIC_SystemReset();
+        stuck_count[i]++;
+        if(stuck_count[i] >= 6) {  // 放宽到30秒
+          total_stuck++;
+          printf("[Watchdog] Task %d stuck! (%d/6)\n", i, stuck_count[i]);
         }
       }
       else
       {
-        stuck_count = 0;
+        stuck_count[i] = 0;  // 只要更新一次就清零
       }
       last_values[i] = task_watchdog[i];
+    }
+    
+    if(total_stuck >= 2) {
+      printf("[Watchdog] Multiple tasks stuck! System reset!\n");
+      HAL_Delay(100);
+      NVIC_SystemReset();
     }
   }
 }

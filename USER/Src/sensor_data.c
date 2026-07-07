@@ -1,377 +1,355 @@
 #include "sensor_data.h"
 #include "ss_rtc.h"
 #include "sd.h"
-#include <stdio.h>
+#include "dht.h"
+#include "BH1750.h"
 #include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-/* ==================== 内部状态 ==================== */
+#define DATA_DIR "0:/DATA/" 
+#define MAX_DAYS 7
+#define MAX_DATA_PER_DAY 12  // 24小时 / 2小时 = 12次
 
-static uint8_t logger_initialized = 0;      /* 模块是否已初始化 */
-static uint8_t last_stored_hour = 0xFF;     /* 上次存储的小时（用于去重） */
-static uint8_t last_stored_date_valid = 0;  /* 上次存储日期是否有效 */
-static uint8_t last_stored_day = 0;         /* 上次存储的日 */
-static uint8_t last_stored_month = 0;       /* 上次存储的月 */
-static uint16_t last_stored_year = 0;       /* 上次存储的年 */
-static EnvData_t latest_data;               /* 最新环境数据（缓存） */
+// 全局变量定义
+SensorData_t g_sensor_data = {0, 0, 0, 0};
+uint8_t g_sensor_valid = 0;
 
-/* ==================== 内部函数 ==================== */
-SS_RTC_Time_t rtc_time;  /* RTC时间缓存 */
-/**
- * @brief 判断是否需要存储
- * @retval 1:需要存储, 0:不需要
- */
-static uint8_t is_time_to_store(void)
+void Sensor_Update(void)
 {
-    RTC_DateTypeDef date;
-    uint8_t hour;
-    uint8_t minute;
+    float t, l;
+    uint8_t h;
     
-    /* 获取当前RTC时间 */
-   SS_RTC_GetTime(&rtc_time);  // 获取当前时间
+    // 读取传感器
+    dht_read_data(&h, &t);
+    l = BH1750_ReadLight();
     
-    hour = rtc_time.hours;
-    minute = rtc_time.minutes;
+    // 存入全局变量
+    g_sensor_data.temperature = t;
+    g_sensor_data.humidity = (uint8_t)h;
+    g_sensor_data.light = l;
+    g_sensor_data.timestamp = HAL_GetTick();
+    g_sensor_valid = 1;
+}
+
+static int is_even_hour(SS_RTC_Time_t *time)
+{
+    // 只在分钟=0 且 小时为偶数时存储（0,2,4,6,8,10,12,14,16,18,20,22）
+    return (time->minutes == 0 && time->hours % 2 == 0);
+}
+
+static void build_file_path(char *path, const char *date)
+{
+    sprintf(path, "%s%s.CSV", DATA_DIR, date);
+}
+
+uint8_t DataLogger_Init(void)
+{
+    FRESULT fr;
+
+    // printf("[LOGGER] SDPath = %s\r\n", SDPath);
     
-    /* 检查分钟是否匹配 */
-    if (minute != LOGGER_TRIGGER_MINUTE) {
+    // 挂载 SD 卡
+    fr = f_mount(&SDFatFS, "0:", 1);
+    if (fr != FR_OK) {
+        printf("[LOGGER] FATFS 挂载失败: %d\r\n", fr);
         return 0;
     }
+    printf("[LOGGER] FATFS 挂载成功\r\n");
     
-    /* 检查小时是否在存储序列中 (0, 2, 4, 6, ..., 22) */
-    if (hour % LOGGER_INTERVAL_HOURS != 0) {
-        return 0;
+    // 创建 DATA 文件夹
+    fr = f_mkdir("0:/DATA");
+    if (fr == FR_OK || fr == FR_EXIST) {
+        printf("[LOGGER] 数据目录已就绪: 0:/DATA\r\n");
+    } else {
+        printf("[LOGGER] 创建目录失败: %d\r\n", fr);
     }
-    
-    /* 检查是否已经存储过这个小时（防止重复触发） */
-    if (last_stored_date_valid &&
-        last_stored_year == date.Year + 2000 &&
-        last_stored_month == date.Month &&
-        last_stored_day == date.Date &&
-        last_stored_hour == hour) {
-        return 0;  /* 已经存过了 */
-    }
-    
-    /* 更新上次存储信息 */
-    last_stored_year = date.Year + 2000;
-    last_stored_month = date.Month;
-    last_stored_day = date.Date;
-    last_stored_hour = hour;
-    last_stored_date_valid = 1;
-    
     return 1;
 }
 
 /**
- * @brief 生成日期文件名
- * @param date_str 日期字符串 "YYYY-MM-DD"
- * @param filename 输出缓冲区
- * @param size     缓冲区大小
+ * @brief 存储当前传感器数据
+ * @note  内部自动判断是否需要存储（偶数小时整点）
+ *        内部自动检查并删除7天前的数据
  */
-static void make_filename(const char *date_str, char *filename, uint16_t size)
+void DataLogger_StoreCurrent(void)
 {
-    snprintf(filename, size, "%s/%s%s", DATA_DIR, date_str, DATA_FILE_EXT);
-}
-
-/**
- * @brief 格式化时间字符串
- * @param time  RTC时间结构体
- * @param buf   输出缓冲区 (至少6字节)
- */
-static void format_time_str(RTC_TimeTypeDef *time, char *buf)
-{
-    snprintf(buf, 6, "%02d:%02d", time->Hours, time->Minutes);
-}
-
-/**
- * @brief 写入CSV表头（如果文件为空）
- * @param file 文件指针
- * @retval 0:成功, 其他:失败
- */
-static uint8_t write_csv_header(FIL *file)
-{
-    FRESULT fr;
-    UINT bw;
-    const char *header = "time,temperature,humidity,light\n";
-    
-    fr = f_write(file, header, strlen(header), &bw);
-    if (fr != FR_OK || bw != strlen(header)) {
-        return 1;
-    }
-    return 0;
-}
-
-/**
- * @brief 追加一条数据到CSV文件
- * @param date_str 日期字符串 "YYYY-MM-DD"
- * @param data     环境数据
- * @retval 0:成功, 其他:失败
- */
-static uint8_t append_data_to_file(const char *date_str, EnvData_t *data)
-{
-    FRESULT fr;
+    SS_RTC_Time_t time;
+    float temp, light;
+    uint8_t humi;
+    char file_path[64];
+    char data_line[64];
     FIL file;
-    char filename[64];
-    char line[LOGGER_LINE_MAX];
-    UINT bw;
-    uint8_t is_new_file = 0;
-    
-    /* 生成文件路径 */
-    make_filename(date_str, filename, sizeof(filename));
-    
-    /* 检查文件是否存在 */
-    fr = f_open(&file, filename, FA_READ);
-    if (fr == FR_OK) {
-        /* 文件存在，关闭后以追加模式打开 */
-        f_close(&file);
-        fr = f_open(&file, filename, FA_OPEN_APPEND | FA_WRITE);
-    } else {
-        /* 文件不存在，创建新文件 */
-        fr = f_open(&file, filename, FA_CREATE_NEW | FA_WRITE);
-        is_new_file = 1;
-    }
-    
-    if (fr != FR_OK) {
-        printf("打开数据文件失败: %d\r\n", fr);
-        return 1;
-    }
-    
-    /* 新文件写入表头 */
-    if (is_new_file) {
-        write_csv_header(&file);
-    }
-    
-    /* 获取当前时间 */
-    SS_RTC_GetTime(&rtc_time);  // 获取当前时间
-    
-    /* 格式化数据行: "HH:MM,temp,humi,light\n" */
-    snprintf(line, sizeof(line), "%02d:%02d,%.1f,%.1f,%d\n",
-             rtc_time.hours, rtc_time.minutes,
-             data->temperature,
-             data->humidity,
-             data->light);
-    
-    /* 写入数据 */
-    fr = f_write(&file, line, strlen(line), &bw);
-    if (fr != FR_OK || bw != strlen(line)) {
-        printf("写入数据失败: %d\r\n", fr);
-        f_close(&file);
-        return 1;
-    }
-    
-    /* 同步到SD卡 */
-    f_sync(&file);
-    f_close(&file);
-    
-    printf("数据已存储: %s", line);
-    return 0;
-}
-
-/* ==================== 对外接口实现 ==================== */
-
-/**
- * @brief 数据记录模块初始化
- */
-uint8_t data_logger_init(void)
-{
     FRESULT fr;
     
-    printf("=== 数据记录模块初始化 ===\r\n");
+    SS_RTC_GetTime(&time);
     
-    /* 挂载SD卡文件系统 */
-    if (mount_sd_fs() != 0) {
-        printf("SD卡挂载失败，数据记录不可用\r\n");
-        return 1;
+    // 判断是否需要存储（偶数小时整点）
+    if (!is_even_hour(&time)) {
+        return;  // 不是存储时间点，直接返回
     }
     
-    /* 创建DATA文件夹（如果不存在） */
-    fr = f_mkdir(DATA_DIR);
-    if (fr == FR_OK) {
-        printf("创建目录 %s 成功\r\n", DATA_DIR);
-    } else if (fr == FR_EXIST) {
-        printf("目录 %s 已存在\r\n", DATA_DIR);
-    } else {
-        printf("创建目录失败: %d\r\n", fr);
-        return 1;
+    // 如果是 00:00，先检查并删除7天前的数据
+    if (time.hours == 0 && time.minutes == 0) {
+        DataLogger_CleanOldFiles();
     }
     
-    /* 初始化状态 */
-    last_stored_hour = 0xFF;
-    last_stored_date_valid = 0;
-    latest_data.temperature = 0;
-    latest_data.humidity = 0;
-    latest_data.light = 0;
+    // 读取传感器数据
+    Sensor_Update();
     
-    logger_initialized = 1;
-    printf("数据记录模块初始化完成\r\n");
-    printf("存储间隔: %d 小时\r\n", LOGGER_INTERVAL_HOURS);
-    printf("触发分钟: %d\r\n", LOGGER_TRIGGER_MINUTE);
+    // 构建文件路径
+    sprintf(file_path, "%s%04d%02d%02d.CSV", DATA_DIR, time.year, time.month, time.day);
     
-    return 0;
-}
-
-/**
- * @brief 更新环境数据
- */
-uint8_t data_logger_update(EnvData_t *data)
-{
-    char date_str[16];
-    
-    if (!logger_initialized) {
-        printf("数据记录模块未初始化\r\n");
-        return 0;
-    }
-    
-    if (data == NULL) {
-        return 0;
-    }
-    
-    /* 缓存最新数据 */
-    latest_data = *data;
-    
-    /* 判断是否到存储时间 */
-    if (!is_time_to_store()) {
-        return 0;
-    }
-    
-    /* 获取当前日期 */
-    SS_RTC_GetTime(&rtc_time);  // 获取当前日期
-    snprintf(date_str, sizeof(date_str), "%04d-%02d-%02d", rtc_time.year, rtc_time.month, rtc_time.day);
-    
-    /* 存储数据 */
-    if (append_data_to_file(date_str, data) == 0) {
-        return 1;  /* 已存储 */
-    }
-    
-    return 0;
-}
-
-/**
- * @brief 按日期查询数据
- */
-uint8_t data_logger_get_data(const char *date_str, char *buffer, uint16_t buf_size)
-{
-    FRESULT fr;
-    FIL file;
-    char filename[64];
-    UINT br;
-    uint16_t total_read = 0;
-    uint8_t has_data = 0;
-    
-    if (!logger_initialized) {
-        printf("数据记录模块未初始化\r\n");
-        buffer[0] = '\0';
-        return 0;
-    }
-    
-    if (buffer == NULL || buf_size < 64) {
-        return 0;
-    }
-    
-    /* 检查日期格式 */
-    if (strlen(date_str) != 10) {
-        buffer[0] = '\0';
-        return 0;
-    }
-    
-    /* 生成文件路径 */
-    make_filename(date_str, filename, sizeof(filename));
-    printf("查询文件: %s\r\n", filename);
-    
-    /* 打开文件 */
-    fr = f_open(&file, filename, FA_READ);
-    if (fr != FR_OK) {
-        printf("文件不存在或打开失败: %d\r\n", fr);
-        buffer[0] = '\0';
-        return 0;
-    }
-    
-    /* 读取全部内容 */
-    buffer[0] = '\0';
-    while (1) {
-        char chunk[128];
-        fr = f_read(&file, chunk, sizeof(chunk) - 1, &br);
-        if (fr != FR_OK || br == 0) {
-            break;
+    // 打开文件（追加模式）
+    fr = f_open(&file, file_path, FA_OPEN_APPEND | FA_WRITE | FA_READ);
+    if (fr == FR_NO_FILE) {
+        // 文件不存在，创建新文件并写入表头
+        fr = f_open(&file, file_path, FA_CREATE_NEW | FA_WRITE | FA_READ);
+        if (fr == FR_OK) {
+            f_write(&file, "时间,温度,湿度,光照\n", strlen("时间,温度,湿度,光照\n"), NULL);
         }
-        chunk[br] = '\0';
+    }
+    
+    if (fr == FR_OK) {
+        // 写入数据
+        sprintf(data_line, "%02d:%02d,%.1f,%d,%.0f\n",
+                time.hours, time.minutes,
+                temp, humi, light);
+        f_write(&file, data_line, strlen(data_line), NULL);
+        f_sync(&file);
+        f_close(&file);
+        printf("[LOGGER] 存储成功: %s", data_line);
+    } else {
+        printf("[LOGGER] 存储失败，错误码: %d\r\n", fr);
+    }
+}
+
+/**
+ * @brief 查询某一天某类型的数据
+ * @param date     日期字符串，格式 "YYYY-MM-DD"
+ * @param type     数据类型：DATA_TYPE_TEMP / DATA_TYPE_HUMI / DATA_TYPE_LIGHT
+ * @param out_count 输出参数，返回数据条数
+ * @return float*  动态分配的数据数组指针
+ * @note  调用者使用完后必须调用 DataLogger_FreeResult() 释放内存
+ */
+float* DataLogger_QueryByType(const char *date, DataType_t type, uint16_t *out_count)
+{
+    char file_path[64];
+    FIL file;
+    FRESULT fr;
+    float *result = NULL;
+    uint16_t count = 0;
+    uint16_t capacity = MAX_DATA_PER_DAY;
+    char line[128];  // 加大缓冲区
+    
+    result = (float*)malloc(capacity * sizeof(float));
+    if (result == NULL) {
+        *out_count = 0;
+        return NULL;
+    }
+    
+    build_file_path(file_path, date);
+    fr = f_open(&file, file_path, FA_READ);
+    if (fr != FR_OK) {
+        free(result);
+        *out_count = 0;
+        return NULL;
+    }
+    
+    // 跳过表头
+    f_gets(line, sizeof(line), &file);
+    
+    // 逐行读取数据
+    while (f_gets(line, sizeof(line), &file) != NULL) {
+        char time_str[8];
+        uint8_t humi = 0;
+        float temp = 0, light = 0;
+        float value = 0;
         
-        /* 检查缓冲区是否足够 */
-        if (total_read + br >= buf_size - 1) {
-            printf("缓冲区不足，数据被截断\r\n");
-            break;
+        // 使用 %f 直接解析
+        int parsed = sscanf(line, "%[^,],%f,%d,%f", time_str, &temp, &humi, &light);
+        
+        // 检查解析是否成功
+        if (parsed != 4) {
+            printf("[QUERY] 解析失败: %s (parsed=%d)\r\n", line, parsed);
+            continue;
         }
         
-        strcat(buffer, chunk);
-        total_read += br;
-        has_data = 1;
+        // 根据类型提取对应值
+        switch (type) {
+            case DATA_TYPE_TEMP:  value = temp;  break;
+            case DATA_TYPE_HUMI:  value = (float)humi;  break;
+            case DATA_TYPE_LIGHT: value = light; break;
+            default: continue;
+        }
+        
+        // 存储到结果数组
+        if (count < capacity) {
+            result[count++] = value;
+        } else {
+            break;
+        }
     }
     
     f_close(&file);
-    
-    if (!has_data) {
-        buffer[0] = '\0';
-        return 0;
-    }
-    
-    printf("查询成功，读取 %d 字节\r\n", total_read);
-    return 1;
+    *out_count = count;
+    return result;
 }
 
 /**
- * @brief 获取当前存储状态
+ * @brief 释放查询结果内存
+ * @param data 由 DataLogger_QueryByType 返回的指针
  */
-uint8_t data_logger_has_data(void)
+void DataLogger_FreeResult(float *data)
 {
+    if (data != NULL) {
+        free(data);
+    }
+}
+
+/**
+ * @brief 获取某一天的数据条数（不分配内存，仅查询）
+ * @param date 日期字符串，格式 "YYYY-MM-DD"
+ * @return 数据条数，0表示无数据或文件不存在
+ */
+uint16_t DataLogger_GetCount(const char *date)
+{
+    char file_path[64];
+    FIL file;
+    FRESULT fr;
+    uint16_t count = 0;
+    char line[64];
+    
+    build_file_path(file_path, date);
+    fr = f_open(&file, file_path, FA_READ);
+    if (fr != FR_OK) {
+        return 0;
+    }
+    
+    // 跳过表头
+    f_gets(line, sizeof(line), &file);
+    
+    // 统计行数
+    while (f_gets(line, sizeof(line), &file) != NULL) {
+        if (strlen(line) > 3) count++;
+    }
+    
+    f_close(&file);
+    return count;
+}
+
+/**
+ * @brief 手动触发删除7天前的文件
+ * @note  通常不需要手动调用，存储时会自动检查
+ */
+void DataLogger_CleanOldFiles(void)
+{
+    SS_RTC_Time_t time;
+    char file_path[64];
     FRESULT fr;
     DIR dir;
+    FILINFO fno;
+    int delete_count = 0;
     
-    if (!logger_initialized) {
-        return 0;
-    }
+    SS_RTC_GetTime(&time);
+    printf("[LOGGER] 开始清理7天前的文件...\r\n");
     
-    /* 打开DATA目录，检查是否有文件 */
     fr = f_opendir(&dir, DATA_DIR);
     if (fr != FR_OK) {
-        return 0;
+        f_mkdir(DATA_DIR);
+        return;
     }
     
+    while (1) {
+        fr = f_readdir(&dir, &fno);
+        if (fr != FR_OK || fno.fname[0] == 0) break;
+        
+        // 只处理 .CSV 文件
+        size_t len = strlen(fno.fname);
+        if (len < 11 || strncmp(fno.fname + len - 4, ".CSV", 4) != 0) continue;
+        
+        // 从文件名提取日期
+        int file_year, file_month, file_day;
+        if (sscanf(fno.fname, "%d-%d-%d.CSV", &file_year, &file_month, &file_day) == 3) {
+            // 计算天数差
+            int diff = (time.year - file_year) * 365 + (time.month - file_month) * 30 + (time.day - file_day);
+            if (diff >= MAX_DAYS) {
+                sprintf(file_path, "%s%s", DATA_DIR, fno.fname);
+                fr = f_unlink(file_path);
+                if (fr == FR_OK) {
+                    delete_count++;
+                    printf("[LOGGER] 删除旧文件: %s\r\n", fno.fname);
+                }
+            }
+        }
+    }
     f_closedir(&dir);
-    
-    /* 如果有目录，认为可能有数据（实际通过查询文件判断） */
-    return 1;
+    printf("[LOGGER] 清理完成，删除 %d 个文件\r\n", delete_count);
 }
 
-/**
- * @brief 手动触发存储
- */
-uint8_t data_logger_force_store(EnvData_t *data)
-{
-    char date_str[16];
+// void DataLogger_GenerateTestData(void)
+// {
+//     const char *short_dates[] = {"20260701", "20260702", "20260703", "20260704"};
+//     const int hours[] = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22};
+//     char file_path[64];
+//     char data_line[64];
+//     FIL file;
+//     FRESULT fr;
+//     int day, hour;
+//     UINT bw;
     
-    if (!logger_initialized) {
-        return 1;
-    }
+//     printf("[TEST] 开始生成测试数据...\r\n");
     
-    if (data == NULL) {
-        data = &latest_data;
-    }
+//     // ★★★ 直接定义温度、湿度、光照的数组，不需要计算 ★★★
+//     // 每天12个数据点（每2小时一个）
+//     float test_data[4][12][3] = {
+//         // 20260701: {温度, 湿度, 光照}
+//         {{22.5, 65.0, 5}, {22.8, 63.0, 6}, {23.0, 61.0, 7}, {23.2, 59.0, 150},
+//          {23.5, 57.0, 300}, {23.8, 55.0, 350}, {24.0, 54.0, 380}, {23.8, 55.0, 350},
+//          {23.5, 57.0, 300}, {23.2, 59.0, 150}, {23.0, 61.0, 10}, {22.7, 63.0, 6}},
+        
+//         // 20260702
+//         {{23.0, 62.0, 5}, {23.2, 60.0, 6}, {23.5, 58.0, 7}, {23.8, 56.0, 160},
+//          {24.0, 54.0, 320}, {24.3, 52.0, 380}, {24.5, 51.0, 400}, {24.3, 52.0, 380},
+//          {24.0, 54.0, 320}, {23.8, 56.0, 160}, {23.5, 58.0, 10}, {23.2, 60.0, 6}},
+        
+//         // 20260703
+//         {{25.0, 58.0, 5}, {25.2, 56.0, 6}, {25.5, 54.0, 7}, {25.8, 52.0, 140},
+//          {26.0, 50.0, 280}, {26.3, 48.0, 330}, {26.5, 47.0, 360}, {26.3, 48.0, 330},
+//          {26.0, 50.0, 280}, {25.8, 52.0, 140}, {25.5, 54.0, 10}, {25.2, 56.0, 6}},
+        
+//         // 20260704
+//         {{24.0, 60.0, 5}, {24.2, 58.0, 6}, {24.5, 56.0, 7}, {24.8, 54.0, 180},
+//          {25.0, 52.0, 350}, {25.3, 50.0, 420}, {25.5, 49.0, 450}, {25.3, 50.0, 420},
+//          {25.0, 52.0, 350}, {24.8, 54.0, 180}, {24.5, 56.0, 10}, {24.2, 58.0, 6}}
+//     };
     
-    /* 获取当前日期 */
-    SS_RTC_GetTime(&rtc_time);
-    snprintf(date_str, sizeof(date_str), "%04d-%02d-%02d",
-             rtc_time.year, rtc_time.month, rtc_time.day);
+//     for (day = 0; day < 4; day++) {
+//         sprintf(file_path, "%s%s.CSV", DATA_DIR, short_dates[day]);
+//         printf("[TEST] 尝试创建: %s\r\n", file_path);
+        
+//         fr = f_open(&file, file_path, FA_CREATE_ALWAYS | FA_WRITE);
+//         if (fr != FR_OK) {
+//             printf("[TEST] 创建文件失败: %s, 错误码: %d\r\n", short_dates[day], fr);
+//             continue;
+//         }
+        
+//         f_write(&file, "时间,温度,湿度,光照\n", strlen("时间,温度,湿度,光照\n"), &bw);
+        
+//         for (hour = 0; hour < 12; hour++) {
+//             float temp = test_data[day][hour][0];
+//             float humi = test_data[day][hour][1];
+//             float light = test_data[day][hour][2];
+            
+//             sprintf(data_line, "%02d:%02d,%.1f,%.1f,%.0f\n",
+//                     hours[hour], 0, temp, humi, light);
+//             printf("[TEST] 写入: %s", data_line);
+//             f_write(&file, data_line, strlen(data_line), &bw);
+//         }
+        
+//         f_close(&file);
+//         printf("[TEST] 生成完成: %s.CSV (12条数据)\r\n", short_dates[day]);
+//     }
     
-    /* 强制存储 */
-    if (append_data_to_file(date_str, data) == 0) {
-        /* 更新上次存储记录，避免正常定时重复存储 */
-        SS_RTC_GetTime(&rtc_time);
-        last_stored_hour = rtc_time.hours;
-        last_stored_date_valid = 1;
-        last_stored_year = rtc_time.year;
-        last_stored_month = rtc_time.month;
-        last_stored_day = rtc_time.day;
-        return 0;
-    }
-    
-    return 1;
-}
+//     printf("[TEST] 所有测试数据生成完成!\r\n");
+// }

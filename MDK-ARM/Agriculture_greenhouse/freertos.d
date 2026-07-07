@@ -40,6 +40,8 @@ agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx
 agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h
 agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sram.h
 agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_fsmc.h
+agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h
+agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h
 agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h
 agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h
 agriculture_greenhouse\freertos.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h
@@ -62,6 +64,7 @@ agriculture_greenhouse\freertos.o: ../Core/Inc/tim.h
 agriculture_greenhouse\freertos.o: ../USER/Inc/dht.h
 agriculture_greenhouse\freertos.o: ../USER/Inc/lcd.h
 agriculture_greenhouse\freertos.o: ../USER/Inc/lcd_draw.h
+agriculture_greenhouse\freertos.o: ../USER/Inc/pic.h
 agriculture_greenhouse\freertos.o: ../Core/Inc/gpio.h
 agriculture_greenhouse\freertos.o: ../Core/Inc/adc.h
 agriculture_greenhouse\freertos.o: ../USER/Inc/touch.h
@@ -78,4 +81,13 @@ agriculture_greenhouse\freertos.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_d
 agriculture_greenhouse\freertos.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
 agriculture_greenhouse\freertos.o: ../FATFS/Target/sd_diskio.h
 agriculture_greenhouse\freertos.o: ../USER/Inc/ss_rtc.h
+agriculture_greenhouse\freertos.o: ../USER/Inc/SG90.h
+agriculture_greenhouse\freertos.o: ../USER/Inc/BH1750.h
+agriculture_greenhouse\freertos.o: ../USER/Inc/Motor.h
+agriculture_greenhouse\freertos.o: ../USER/Inc/esp8266.h
+agriculture_greenhouse\freertos.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdlib.h
+agriculture_greenhouse\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 agriculture_greenhouse\freertos.o: ../USER/Inc/sensor_data.h
+agriculture_greenhouse\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+agriculture_greenhouse\freertos.o: ../USER/Inc/auto_control.h
+agriculture_greenhouse\freertos.o: ../USER/Inc/system_config.h

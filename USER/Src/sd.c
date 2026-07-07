@@ -103,19 +103,14 @@ uint8_t sd_write(uint8_t *pbuf, uint32_t saddr, uint32_t cnt)
     return sta;
 }
 
-// 文件系统管理
-/**
- * @brief 挂载SD卡文件系统（如果未挂载）
- * @return 0:成功, 其他:失败
- */
 uint8_t mount_sd_fs(void)
 {
     extern FATFS SDFatFS;
-    extern char SDPath[4];
     
     if (!sd_fs_mounted)
     {
-        FRESULT fr = f_mount(&SDFatFS, SDPath, 1);
+        // 使用硬编码盘符 "0:" 
+        FRESULT fr = f_mount(&SDFatFS, "0:", 1);
         if (fr == FR_OK)
         {
             sd_fs_mounted = 1;
@@ -127,6 +122,5 @@ uint8_t mount_sd_fs(void)
             return 1;
         }
     }
-    
     return 0;
 }

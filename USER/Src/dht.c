@@ -92,9 +92,11 @@ uint8_t DHT_Response(void)
 }
 
 //读取数据（湿度+温度）
-void dht_read_data(uint8_t *humi,uint8_t *temp)
+void dht_read_data(uint8_t *humi,float *temp)
 { 
   uint8_t buf[5];
+  static uint8_t last_humi=0;
+  static uint8_t last_temp=0;
 
   DHT_Start();          //发出起始信号
   DHT_MODE_Input();     //IO方向：输入
@@ -130,9 +132,9 @@ void dht_read_data(uint8_t *humi,uint8_t *temp)
     printf("校验失败 %d %d\r\n",sum,buf[4]);
   }
   else{
-    printf("湿度: %dRH ,", buf[0]);
-    printf("温度: %d.%d℃\r\n", buf[2], buf[3]);
-    *humi=buf[0];
-    *temp=buf[2];
+    last_humi = buf[0];
+    last_temp = (float)buf[2] + (float)buf[3] / 10.0f;
   }
+  *humi = last_humi;
+  *temp = last_temp;
 }

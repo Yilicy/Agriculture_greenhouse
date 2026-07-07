@@ -13,6 +13,6 @@ void DHT_MODE_Output(void);  //DQ输出模式
 void DHT_Start(void);        //主机（起始信号）
 uint8_t DHT_Response(void);  //从机（响应信号）
 int8_t DHT11_Wait(uint8_t mode);
-void dht_read_data(uint8_t *humi,uint8_t *temp); //读取数据（湿度+温度）
+void dht_read_data(uint8_t *humi,float *temp); //读取数据（湿度+温度）
 
 #endif

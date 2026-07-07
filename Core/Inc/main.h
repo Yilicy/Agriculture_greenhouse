@@ -67,6 +67,8 @@ void Error_Handler(void);
 #define LED1_GPIO_Port GPIOF
 #define LED2_Pin GPIO_PIN_10
 #define LED2_GPIO_Port GPIOF
+#define SG90_Pin GPIO_PIN_0
+#define SG90_GPIO_Port GPIOA
 #define T_SCK_Pin GPIO_PIN_0
 #define T_SCK_GPIO_Port GPIOB
 #define T_PEN_Pin GPIO_PIN_1
@@ -87,9 +89,16 @@ void Error_Handler(void);
 #define DHT_GPIO_Port GPIOG
 #define LCDCS_Pin GPIO_PIN_12
 #define LCDCS_GPIO_Port GPIOG
+#define MOTOR_Pin GPIO_PIN_6
+#define MOTOR_GPIO_Port GPIOB
+#define I2C_SCL_Pin GPIO_PIN_8
+#define I2C_SCL_GPIO_Port GPIOB
+#define I2C_SDA_Pin GPIO_PIN_9
+#define I2C_SDA_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 void delay_us(uint32_t us);
+void TestQuery(void);
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
