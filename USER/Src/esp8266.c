@@ -90,6 +90,15 @@ ESP_Status_t ESP8266_SendCmd(const char *cmd, const char *ack, uint32_t timeout)
     {
         if (USART3_RX_STA & 0x8000)
         {
+            // 先处理指令
+            if (strstr(USART3_RX_BUF, "+IPD,") && strstr(USART3_RX_BUF, "GET /control"))
+            {
+                ESP8266_ProcessRequest();
+                USART3_RX_STA = 0;
+                memset(USART3_RX_BUF, 0, RX_BUFFER_SIZE);
+                continue;
+            }
+            
             if (strstr(USART3_RX_BUF, ack) != NULL) return ESP_OK;
             USART3_RX_STA = 0;
         }
@@ -134,10 +143,21 @@ void ESP8266_ProcessRequest(void)
 {
     if (!(USART3_RX_STA & 0x8000)) return;
     
-    char *p = strstr(USART3_RX_BUF, "+IPD,");
-    if (!p || !strstr(p, "GET /control")) { USART3_RX_STA = 0; memset(USART3_RX_BUF, 0, RX_BUFFER_SIZE); return; }
+    // 先复制到本地，防止被覆盖
+    char local_buf[512];
+    uint16_t len = USART3_RX_STA & 0x3FFF;
+    if (len > 511) len = 511;
+    memcpy(local_buf, USART3_RX_BUF, len);
+    local_buf[len] = '\0';
     
-    printf("[CTRL] %s\r\n", USART3_RX_BUF);
+    // 清空全局缓冲区
+    USART3_RX_STA = 0;
+    memset(USART3_RX_BUF, 0, RX_BUFFER_SIZE);
+    
+    char *p = strstr(local_buf, "+IPD,");
+    if (!p || !strstr(p, "GET /control")) return;
+    
+    printf("[CTRL] %s\r\n", p);
     
     // 解析 link_id
     int link_id = 0;
@@ -160,24 +180,21 @@ void ESP8266_ProcessRequest(void)
         "HTTP/1.1 200 OK\r\n"
         "Content-Type: application/json\r\n"
         "Content-Length: %d\r\n"
-        "Connection: close\r\n"
-        "\r\n"
+        "Connection: close\r\n\r\n"
         "%s", (int)strlen(body), body);
     
     int total_len = strlen(http_response);
     char cmd[64];
     sprintf(cmd, "AT+CIPSEND=%d,%d\r\n", link_id, total_len);
-    HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 1000);
-    HAL_Delay(100);
-    HAL_UART_Transmit(&huart3, (uint8_t*)http_response, total_len, 1000);
+    HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 500);
+    HAL_Delay(50);
+    HAL_UART_Transmit(&huart3, (uint8_t*)http_response, total_len, 500);
     HAL_Delay(100);
     
     sprintf(cmd, "AT+CIPCLOSE=%d\r\n", link_id);
-    HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 1000);
+    HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 500);
     
     printf("[CTRL] 已回复OK\r\n");
-    USART3_RX_STA = 0;
-    memset(USART3_RX_BUF, 0, RX_BUFFER_SIZE);
 }
 
 void ControlDevice(const char *device, uint8_t action)
@@ -203,7 +220,7 @@ void ControlDevice(const char *device, uint8_t action)
 void upload_sensor_data(uint8_t fla)
 {
     static uint8_t first = 1;
-    char json[512];
+    char json[512], cmd[128], http_req[512];
     
     if (first == 1 || fla == 1)
     {
@@ -217,62 +234,32 @@ void upload_sensor_data(uint8_t fla)
         sprintf(json, "{\"temp\":%.1f,\"humid\":%d,\"light\":%.1f}",
             g_sensor_data.temperature, g_sensor_data.humidity, g_sensor_data.light);
     }
-    printf("[UPLOAD] JSON: %s\r\n", json);
-
+    
     // TCP连接
-    ESP8266_SendCmd("AT+CIPCLOSE=4\r\n", NULL, 500);
-    HAL_Delay(200);
-    
-    char cmd[128];
     sprintf(cmd, "AT+CIPSTART=4,\"TCP\",\"%s\",%d\r\n", SERVER_IP, SERVER_PORT);
-    if (ESP8266_SendCmd(cmd, "OK", 5000) != ESP_OK) 
-    {
-        printf("[UPLOAD] TCP连接失败\r\n");
-        return;
-    }
+    if (ESP8266_SendCmd(cmd, "OK", 5000) != ESP_OK) return;
     
-    // 构建HTTP请求
-    char http_req[512];
+    // HTTP请求
     sprintf(http_req,
         "POST /api/hardware/init HTTP/1.1\r\n"
         "Host: %s:%d\r\n"
         "Content-Type: application/json\r\n"
         "Content-Length: %d\r\n"
-        "Connection: close\r\n"
-        "\r\n"
+        "Connection: close\r\n\r\n"
         "%s", SERVER_IP, SERVER_PORT, (int)strlen(json), json);
     
-    // 发送
     int len = strlen(http_req);
     sprintf(cmd, "AT+CIPSEND=4,%d\r\n", len);
     
-    HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 500);
-    HAL_Delay(50);
-    HAL_UART_Transmit(&huart3, (uint8_t*)http_req, len, 2000);
-    HAL_Delay(50);
+    ESP8266_SendCmd(cmd, ">", 2000);
+    HAL_UART_Transmit(&huart3, (uint8_t*)http_req, len, 3000);
+    HAL_Delay(200);
     
-    printf("[UPLOAD] %s\r\n", json);
+    printf("[UPLOAD] OK %s\r\n", json);
     
-    HAL_UART_Transmit(&huart3, (uint8_t*)"AT+CIPCLOSE=4\r\n", 14, 500);
-    
-    // USART3_RX_STA = 0;
-    // memset(USART3_RX_BUF, 0, RX_BUFFER_SIZE);
-    // HAL_UART_Transmit(&huart3, (uint8_t*)cmd, strlen(cmd), 1000);
-    
-    // uint32_t t = HAL_GetTick();
-    // while (HAL_GetTick() - t < 2000)
-    // {
-    //     ESP8266_ProcessRequest();
-    //     if (USART3_RX_STA & 0x8000 && strstr(USART3_RX_BUF, ">")) break;
-    //     HAL_Delay(10);
-    // }
-    
-    // HAL_UART_Transmit(&huart3, (uint8_t*)http_req, len, 3000);
-    // HAL_Delay(200);
-    
-    // printf("[UPLOAD] 发送完成\r\n");
-    
-    // ESP8266_SendCmd("AT+CIPCLOSE=4\r\n", NULL, 500);
+    // 等CLOSED确认断开
+    ESP8266_SendCmd("AT+CIPCLOSE=4\r\n", "CLOSED", 2000);
+    HAL_Delay(100);
 }
 
 void RequestUpload(void)

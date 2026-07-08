@@ -63,3 +63,8 @@ agriculture_greenhouse\auto_control.o: ../Middlewares/Third_Party/FreeRTOS/Sourc
 agriculture_greenhouse\auto_control.o: ../USER/Inc/SG90.h
 agriculture_greenhouse\auto_control.o: ../USER/Inc/Motor.h
 agriculture_greenhouse\auto_control.o: ../Core/Inc/tim.h
+agriculture_greenhouse\auto_control.o: ../USER/Inc/esp8266.h
+agriculture_greenhouse\auto_control.o: ../Core/Inc/usart.h
+agriculture_greenhouse\auto_control.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\string.h
+agriculture_greenhouse\auto_control.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdlib.h
+agriculture_greenhouse\auto_control.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h

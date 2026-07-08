@@ -22,15 +22,21 @@ typedef enum {
     ESP_TIMEOUT = 2
 } ESP_Status_t;
 
+// 在 esp8266.h 中添加
 typedef enum {
     MSG_UPLOAD_DATA,
     MSG_UPLOAD_STATUS,
-    MSG_PROCESS_REQUEST
-} EspMessageType_t;
+    MSG_TOGGLE_FAN,
+    MSG_TOGGLE_CURTAIN,
+    MSG_TOGGLE_LIGHT,
+    MSG_TOGGLE_MODE
+} EspMsgType_t;
 
 typedef struct {
-    EspMessageType_t type;
+    EspMsgType_t type;
 } EspMessage_t;
+
+extern QueueHandle_t espQueueHandle;
 
 extern volatile uint16_t USART3_RX_STA;
 extern char USART3_RX_BUF[RX_BUFFER_SIZE];

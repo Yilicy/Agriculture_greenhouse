@@ -4,6 +4,7 @@
 #include "Motor.h"
 #include "tim.h"
 #include <stdio.h>
+#include "esp8266.h"
 
 /**
  * @brief 检查手动关闭冷却期是否激活
@@ -92,6 +93,10 @@ void AutoControl_All(SystemConfig_t *cfg)
             Fan_SetLevel(target_level);
             SystemConfig_MarkDirty();
             printf("[AUTO] 风扇升档 -> %d档 (温度: %.1f°C)\r\n", target_level, temp);
+            // 立即通知
+            EspMessage_t msg;
+            msg.type = MSG_UPLOAD_STATUS;
+            xQueueSend(espQueueHandle, &msg, 0);
         } 
         // 降档：需要温度低于降档阈值（迟滞控制）
         else if (target_level < current_level) {
@@ -109,6 +114,10 @@ void AutoControl_All(SystemConfig_t *cfg)
                 Fan_SetLevel(target_level);
                 SystemConfig_MarkDirty();
                 printf("[AUTO] 风扇降档 -> %d档 (温度: %.1f°C)\r\n", target_level, temp);
+                // 立即通知
+                EspMessage_t msg;
+                msg.type = MSG_UPLOAD_STATUS;
+                xQueueSend(espQueueHandle, &msg, 0);
             }
         }
     }

@@ -128,10 +128,7 @@ void dht_read_data(uint8_t *humi,float *temp)
   }
   uint8_t sum = buf[0] + buf[1] + buf[2] + buf[3];    //校验数据
 
-  if(sum != buf[4]){
-    printf("校验失败 %d %d\r\n",sum,buf[4]);
-  }
-  else{
+  if(sum == buf[4]){
     last_humi = buf[0];
     last_temp = (float)buf[2] + (float)buf[3] / 10.0f;
   }

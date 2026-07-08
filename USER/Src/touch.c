@@ -60,6 +60,7 @@ static uint16_t tp_read_ad(uint8_t cmd)
 {
     uint8_t count = 0;
     uint16_t num = 0;
+    uint32_t timeout = 50000;   // 超时计数
     
     T_CLK(0);           /* 先拉低时钟 */
     T_MOSI(0);          /* 拉低数据线 */
@@ -80,6 +81,7 @@ static uint16_t tp_read_ad(uint8_t cmd)
         T_CLK(1);
 
         if (T_MISO) num++;
+        if (--timeout == 0) break;   // 超时退出
     }
 
     num >>= 4;          /* 只有高12位有效. */

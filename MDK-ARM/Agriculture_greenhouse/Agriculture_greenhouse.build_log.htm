@@ -30,19 +30,25 @@ Build target 'Agriculture_greenhouse'
 compiling esp8266.c...
 ../USER/Inc/sensor_data.h(27): warning:  #1295-D: Deprecated declaration Sensor_Update - give arg types
   void Sensor_Update();
-..\USER\Src\esp8266.c(187): warning:  #223-D: function "Remote_SetFan" declared implicitly
+..\USER\Src\esp8266.c(204): warning:  #223-D: function "Remote_SetFan" declared implicitly
           Remote_SetFan(action);
-..\USER\Src\esp8266.c(191): warning:  #223-D: function "Manual_SetCurtain" declared implicitly
+..\USER\Src\esp8266.c(208): warning:  #223-D: function "Manual_SetCurtain" declared implicitly
           Manual_SetCurtain(action);
-..\USER\Src\esp8266.c(196): warning:  #223-D: function "Manual_SetSystemAuto" declared implicitly
+..\USER\Src\esp8266.c(213): warning:  #223-D: function "Manual_SetSystemAuto" declared implicitly
               Manual_SetSystemAuto();
-..\USER\Src\esp8266.c(198): warning:  #223-D: function "Manual_SetSystemManual" declared implicitly
+..\USER\Src\esp8266.c(215): warning:  #223-D: function "Manual_SetSystemManual" declared implicitly
               Manual_SetSystemManual();
 ..\USER\Src\esp8266.c: 5 warnings, 0 errors
+compiling freertos.c...
+../USER/Inc/sensor_data.h(27): warning:  #1295-D: Deprecated declaration Sensor_Update - give arg types
+  void Sensor_Update();
+../Core/Src/freertos.c(474): warning:  #177-D: variable "uploading"  was declared but never referenced
+    uint8_t uploading = 0;
+../Core/Src/freertos.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=71100 RO-data=327132 RW-data=464 ZI-data=44752  
+Program Size: Code=70536 RO-data=327132 RW-data=464 ZI-data=44752  
 FromELF: creating hex file...
-"Agriculture_greenhouse\Agriculture_greenhouse.axf" - 0 Error(s), 5 Warning(s).
+"Agriculture_greenhouse\Agriculture_greenhouse.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 

@@ -157,7 +157,7 @@ void MX_FREERTOS_Init(void)
   SystemConfig_Init();
 
   // 看门狗监控（优先级1 - 保证能监控所有任务）
-  BaseType_t Rewatchdog = xTaskCreate(WatchdogTask,"wtachdog",256,NULL,1,&watchdogTaskHandle);
+  BaseType_t Rewatchdog = xTaskCreate(WatchdogTask,"wtachdog",256,NULL,6,&watchdogTaskHandle);
   if(Rewatchdog == pdFALSE)
     printf("Create watchdog task failed!\r\n");
 
@@ -269,25 +269,25 @@ void TouchTask(void *argument)
         TouchAction_t action;
         uint8_t send = 0;
         
-        if (x > 40 && x < 85 && y > 393 && y < 415) {
+        if (x > 20 && x < 98 && y > 390 && y < 420) {
           if (g_sys_config.system_mode == 0) {
             action = TOUCH_FAN;
             send = 1;
           }
         }
-        else if (x > 135 && x < 180 && y > 393 && y < 415) {
+        else if (x > 125 && x < 200 && y > 390 && y < 420) {
           if (g_sys_config.system_mode == 0) {
             action = TOUCH_CURTAIN;
             send = 1;
           }
         }
-        else if (x > 230 && x < 280 && y > 393 && y < 415) {
+        else if (x > 220 && x < 290 && y > 390 && y < 420) {
           if (g_sys_config.system_mode == 0) {
             action = TOUCH_LIGHT;
             send = 1;
           }
         }
-        else if (x > 250 && x < 298 && y > 10 && y < 38) {
+        else if (x > 250 && x < 300 && y > 10 && y < 38) {
           action = TOUCH_MODE;
           send = 1;
         }
@@ -314,109 +314,6 @@ void TouchTask(void *argument)
     last_touch_state = current_touch;
   }
 }
-// void TouchTask(void *argument)
-// {
-//   uint32_t last_scan = 0;
-//   uint32_t touch_start_time = 0;
-//   uint32_t last_action_time = 0;
-//   uint8_t touch_state = 0;
-//   uint8_t last_touch_state = 0;
-  
-//   uint16_t x = 0, y = 0;
-    
-//   for(;;)
-//   {
-//     vTaskDelayUntil(&last_scan, pdMS_TO_TICKS(50));
-//     task_watchdog[0]++;
-
-//     tp_dev.scan(0);
-      
-//     uint8_t current_touch = (tp_dev.sta & TP_PRES_DOWN) ? 1 : 0;
-    
-//     // ===== 检测触摸按下 =====
-//     if (current_touch && !last_touch_state)
-//     {
-//       x = tp_dev.x[0];
-//       y = tp_dev.y[0];
-//       printf("[Touch] press x=%d y=%d\r\n", x, y);
-//       touch_start_time = xTaskGetTickCount();
-//       touch_state = 1;
-//     }
-    
-//     // ===== 触摸保持中 =====
-//     if (touch_state == 1 && current_touch)
-//     {
-//       uint32_t now = xTaskGetTickCount();
-//       if ((now - last_action_time) > pdMS_TO_TICKS(300))
-//       {
-//         // 风扇区域（手动模式才能控制）
-//         if (x > 40 && x < 85 && y > 393 && y < 415) {
-//           if (g_sys_config.system_mode == 0) {
-//             if (g_sys_config.fan_state == 0) {
-//               Remote_SetFan(1);
-//             } else {
-//               Remote_SetFan(0);
-//             }
-//             last_action_time = now;
-//             touch_state = 2;
-//           }
-//         }
-        
-//         // 卷帘区域（手动模式才能控制）
-//         else if (x > 135 && x < 180 && y > 393 && y < 415) {
-//           if (g_sys_config.system_mode == 0) {
-//             Manual_SetCurtain(!g_sys_config.curtain_state);
-//             last_action_time = now;
-//             touch_state = 2;
-//           }
-//         }
-        
-//         // 补光灯区域（手动模式才能控制）
-//         else if (x > 230 && x < 280 && y > 393 && y < 415) {
-//           if (g_sys_config.system_mode == 0) {
-//             Manual_SetLight(!g_sys_config.light_state);
-//             last_action_time = now;
-//             touch_state = 2;
-//           }
-//         }
-        
-//         // 模式切换按钮
-//         else if (x > 250 && x < 298 && y > 10 && y < 38) {
-//           if (g_sys_config.system_mode == 1) {
-//             Manual_SetSystemManual();
-//           } else {
-//             Manual_SetSystemAuto();
-//           }
-//           last_action_time = now;
-//           touch_state = 2;
-//         }
-        
-//         // 有操作就发状态
-//         if (touch_state == 2) {
-//           EspMessage_t msg;
-//           msg.type = MSG_UPLOAD_STATUS;
-//           xQueueSend(espQueueHandle, &msg, 0);
-//         }
-//       }
-//     }
-    
-//     // ===== 检测触摸释放 =====
-//     if (!current_touch && last_touch_state)
-//     {
-//       printf("[Touch] release\r\n");
-//       touch_state = 0;
-//     }
-    
-//     // ===== 超时保护 =====
-//     if (touch_state == 1 && (xTaskGetTickCount() - touch_start_time) > pdMS_TO_TICKS(2000))
-//     {
-//       printf("Touch timeout\r\n");
-//       touch_state = 0;
-//     }
-    
-//     last_touch_state = current_touch;
-//   }
-// }
 
 /**
  * @brief 自动亮度控制任务 - 根据环境光传感器调节屏幕亮度
@@ -475,6 +372,9 @@ void AutoControlTask(void *argument)
   // 启动30分钟自动保存定时器
   SystemConfig_StartAutoSaveTimer();
 
+  // 上电延时10秒再启动自动控制
+  vTaskDelay(pdMS_TO_TICKS(30000));
+
   while (1)
   {
     task_watchdog[2]++;
@@ -499,7 +399,7 @@ void AutoControlTask(void *argument)
       // 手动模式：风扇自动匹配
       FanAutoLevel_Manual(&g_sys_config);
     }
-    
+
     SystemConfig_CheckSave();   // 检查是否需要保存
 
     vTaskDelay(pdMS_TO_TICKS(5000));
@@ -553,9 +453,6 @@ void CloudsyncTask(void *argument)
     // 存储数据到SD卡
     DataLogger_StoreCurrent();
 
-    // 清空旧消息，只要最新的
-    xQueueReset(espQueueHandle);
-    
     EspMessage_t msg;
     msg.type = MSG_UPLOAD_DATA;
     xQueueSend(espQueueHandle, &msg, 0);
@@ -633,6 +530,7 @@ void ScreenTask(void *argument)
   lcd_showchinese(40,330,24,"风扇",0x0140,WHITE);
   lcd_showchinese(135,330,24,"卷帘",0x0140,WHITE);
   lcd_showchinese(222,330,24,"补光灯",0x0140,WHITE);
+  lcd_showchinese(63,363,16,"档",0x2104,WHITE);
   lcd_show_circle(32,371,8,0x4208);  // 画圈
   LCD_DrawLine(28,371,38,371,0X4208);
   lcd_show_circle(90,371,8,0x4208);  // 画圈
@@ -680,8 +578,7 @@ void ScreenTask(void *argument)
 
     if(fan_lastlevel!=g_sys_config.fan_level)
     {
-      lcd_shownum(48,363,16,g_sys_config.fan_level,GRAY);
-      lcd_showchinese(63,363,16,"档",GRAY,WHITE);
+      lcd_shownum(48,363,16,g_sys_config.fan_level,0x2104);
       fan_lastlevel=g_sys_config.fan_level;
     }
 
@@ -689,16 +586,12 @@ void ScreenTask(void *argument)
     {
       if(fan_laststate!=g_sys_config.fan_state)
       {
-        lcd_shownum(26,270,16,g_sys_config.fan_state,0x0140);
+        lcd_shownum(26,270,16,g_sys_config.fan_state,0x02104);
         if(g_sys_config.fan_state)
         {
-          lcd_draw_rectangle(38,390,50,30,RED);
-          LCD_Fill(38,390,88,420,RED);
           lcd_showchinese(40,393,24,"关闭",BRRED,RED);
         }
         else{
-          lcd_draw_rectangle(38,390,50,30,GREEN);
-          LCD_Fill(38,390,88,420,GREEN);
           lcd_showchinese(40,393,24,"打开",0x0180,GREEN);
         }
         fan_laststate=g_sys_config.fan_state;
@@ -708,16 +601,12 @@ void ScreenTask(void *argument)
         lcd_shownum(126,270,16,g_sys_config.curtain_state,0x0140);
         if(g_sys_config.curtain_state)
         {
-          lcd_draw_rectangle(132,390,50,30,RED);
-          LCD_Fill(132,390,184,420,RED);
-          lcd_showchinese(135,393,24,"关闭",BRRED,RED);
-          lcd_showchinese(135,363,16,"运行中",GRAY,WHITE);
+          lcd_showchinese(137,393,24,"关闭",BRRED,RED);
+          lcd_showchinese(135,363,16,"运行中",0x2104,WHITE);
         }
         else{
-          lcd_draw_rectangle(132,390,50,30,GREEN);
-          LCD_Fill(132,390,184,420,GREEN);
           lcd_showchinese(137,393,24,"打开",0x0180,GREEN);
-          lcd_showchinese(135,363,16,"已关闭",GRAY,WHITE);
+          lcd_showchinese(135,363,16,"已关闭",0x2104,WHITE);
         }
         curtain_laststate=g_sys_config.curtain_state;
       }
@@ -726,31 +615,23 @@ void ScreenTask(void *argument)
         lcd_shownum(222,270,16,g_sys_config.curtain_state,0x0140);
         if(g_sys_config.light_state)
         {
-          lcd_draw_rectangle(228,390,50,30,RED);
-          LCD_Fill(228,390,278,420,RED);
           lcd_showchinese(230,393,24,"关闭",BRRED,RED);
-          lcd_showchinese(230,363,16,"运行中",GRAY,WHITE);
+          lcd_showchinese(230,363,16,"运行中",0x2104,WHITE);
         }
         else{
-          lcd_draw_rectangle(228,390,50,30,GREEN);
-          LCD_Fill(228,390,278,420,GREEN);
           lcd_showchinese(230,393,24,"打开",0x0180,GREEN);
-          lcd_showchinese(230,363,16,"已关闭",GRAY,WHITE);
+          lcd_showchinese(230,363,16,"已关闭",0x2104,WHITE);
         }
         light_laststate = g_sys_config.light_state;
       }
       if(mode_last!=g_sys_config.system_mode)
       {
         if(g_sys_config.system_mode)
-        {
-          lcd_draw_rectangle(248,8,50,30,GREEN);
-          LCD_Fill(248,8,298,38,GREEN);
+        {;
           lcd_showchinese(250,10,24,"自动",0x0180,GREEN);
           mode_last=g_sys_config.system_mode;
         }
         else{
-          lcd_draw_rectangle(248,8,50,30,RED);
-          LCD_Fill(248,8,298,38,RED);
           lcd_showchinese(250,10,24,"手动",BRRED,RED);
           mode_last=g_sys_config.system_mode;
         }
@@ -765,15 +646,12 @@ void ScreenTask(void *argument)
                 Remote_SetFan(1);
             else
                 Remote_SetFan(0);
-            printf("exe fan!\r\n");
             break;
         case TOUCH_CURTAIN:
             Manual_SetCurtain(!g_sys_config.curtain_state);
-            printf("exe curtain!\r\n");
             break;
         case TOUCH_LIGHT:
             Manual_SetLight(!g_sys_config.light_state);
-            printf("exe light!\r\n");
             break;
         case TOUCH_MODE:
             if (g_sys_config.system_mode == 1)
