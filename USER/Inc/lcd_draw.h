@@ -10,9 +10,9 @@
 #define BRED        0XF81F
 #define GRED 		0XFFE0
 #define GBLUE		0X07FF
-#define RED         0xF800
+#define RED         0X7800 // 0xF800
 #define MAGENTA     0xF81F
-#define GREEN       0x07E0
+#define GREEN       0X03E0 // 0x07E0
 #define CYAN        0x7FFF
 #define YELLOW      0xFFE0
 #define BROWN 		0XBC40 //棕色

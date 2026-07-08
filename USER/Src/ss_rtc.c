@@ -120,7 +120,7 @@ void SS_RTC_GetDateString(char *buffer, uint16_t size)
     SS_RTC_Time_t time;
     SS_RTC_GetTime(&time);
     
-    snprintf(buffer, size, "%04d/%02d/%02d %s", 
+    snprintf(buffer, size, "%04d/%2d/%2d %s", 
              time.year, time.month, time.day, 
              weekday_names[time.weekday % 7]);
 }
@@ -136,7 +136,7 @@ void SS_RTC_Test(UART_HandleTypeDef *huart)
     SS_RTC_GetTime(&time);
     
     snprintf(buffer, sizeof(buffer), 
-             "Time: %04d-%02d-%02d %02d:%02d:%02d Week:%s\r\n",
+             "Time: %04d-%2d-%2d %02d:%02d:%02d Week:%s\r\n",
              time.year, time.month, time.day,
              time.hours, time.minutes, time.seconds,
              weekday_names[time.weekday % 7]);

@@ -79,7 +79,7 @@ void MX_FREERTOS_Init(void);
 // printf重定义
 int fputc(int ch, FILE *f)
 {
-	HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 0xffff);
+	HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);//0xffff
 	return ch;
 }
 
@@ -91,37 +91,6 @@ void delay_us(uint32_t us)
   while (__HAL_TIM_GET_COUNTER(&htim3) < us);  // 等待计数完成
   HAL_TIM_Base_Stop(&htim3);  // 停止定时器
 }
-
-void TestQuery(void)
-{
-    uint16_t count;
-    float *data;
-    
-    // ★★★ 查询短日期格式 ★★★
-    data = DataLogger_QueryByType("20260701", DATA_TYPE_TEMP, &count);
-    if (data != NULL) {
-        printf("20260701 温度数据 (%d条):\r\n", count);
-        for (int i = 0; i < count && i < 5; i++) {
-            printf("  %.1f°C\r\n", data[i]);
-        }
-        DataLogger_FreeResult(data);
-    } else {
-        printf("20260701 无温度数据\r\n");
-    }
-    
-    // 查询光照
-    data = DataLogger_QueryByType("20260702", DATA_TYPE_LIGHT, &count);
-    if (data != NULL) {
-        printf("\r\n20260702 光照数据 (%d条):\r\n", count);
-        for (int i = 0; i < count && i < 5; i++) {
-            printf("  %.0f lx\r\n", data[i]);
-        }
-        DataLogger_FreeResult(data);
-    } else {
-        printf("20260702 无光照数据\r\n");
-    }
-}
-
 /* USER CODE END 0 */
 
 /**
@@ -185,27 +154,13 @@ int main(void)
   // 光照传感器初始化
   BH1750_Init();
 
-  // 设置ESP8266波特率为921600
-  ESP8266_SendCmd("AT+UART_DEF=921600,8,1,0,0\r\n", "OK", 1000);
-  HAL_Delay(500);
-
-  // 重新初始化USART3为921600
-  huart3.Init.BaudRate = 921600;
-  HAL_UART_Init(&huart3);
-
-  // 初始化
-  ESP8266_SendCmd("AT+RST\r\n", "OK", 2000);
+  ESP8266_SendCmd("AT+RST\r\n", "OK", 3000);
   HAL_Delay(1500);
   ESP8266_Init(WIFI_SSID, WIFI_PASSWORD);
-  ESP8266_StartServer(80);
 
-  // ESP8266_SendCmd("AT+RST\r\n", "OK", 3000);
-  // HAL_Delay(2000);
-  // ESP8266_Init(WIFI_SSID, WIFI_PASSWORD);
-
-  // // 启动服务器
-  // ESP8266_SendCmd("AT+CIPSERVER=1,80\r\n", "OK", 2000);
-  // printf("服务器已启动, IP: 10.17.102.247\r\n");
+  // 启动服务器
+  ESP8266_SendCmd("AT+CIPSERVER=1,80\r\n", "OK", 2000);
+  printf("服务器已启动, IP: 10.17.102.247\r\n");
 
     // int count = 0;
     // while (1)

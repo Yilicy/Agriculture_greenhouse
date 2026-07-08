@@ -24,6 +24,7 @@ typedef enum {
 
 typedef enum {
     MSG_UPLOAD_DATA,
+    MSG_UPLOAD_STATUS,
     MSG_PROCESS_REQUEST
 } EspMessageType_t;
 
@@ -43,7 +44,7 @@ ESP_Status_t ESP8266_GetIP(char *ip_buffer);
 ESP_Status_t ESP8266_StartServer(uint16_t port);
 void ESP8266_ProcessRequest(void);
 void ControlDevice(const char *device, uint8_t action);
-void upload_sensor_data(void);
+void upload_sensor_data(uint8_t fla);
 void RequestUpload(void);
 
 #endif

@@ -1,5 +1,7 @@
 #include "BH1750.h"
 #include "iic.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
 
 extern void delay_us(uint32_t us);
 
@@ -37,9 +39,16 @@ void BH1750_Init(void)
  */
 float BH1750_ReadLight(void)
 {
+    float light_last = 0;
     uint16_t raw = 0;
     uint8_t ack = 0;
+    extern SemaphoreHandle_t i2c_mutex;
     
+    // 获取I2C总线
+    if (xSemaphoreTake(i2c_mutex, pdMS_TO_TICKS(200)) != pdTRUE) {
+        return light_last;
+    }
+
     // 1. 发送测量指令（连续高分辨率模式）
     iic_start();
     iic_send_byte(BHAddWrite);     // 0x46
@@ -56,9 +65,13 @@ float BH1750_ReadLight(void)
     }
     iic_stop();
     
-    // ★★★★★ 关键：等待 180ms 让传感器完成测量！★★★★★
-    HAL_Delay(180);
+    xSemaphoreGive(i2c_mutex);   // 释放I2C，等待测量完成
+    vTaskDelay(pdMS_TO_TICKS(180));  // 让出CPU,等待 180ms 让传感器完成测量
     
+    // 重新获取I2C
+    if (xSemaphoreTake(i2c_mutex, pdMS_TO_TICKS(200)) != pdTRUE) {
+        return -1.0f;
+    }
     // 2. 读取数据
     iic_start();
     iic_send_byte(BHAddRead);       // 0x47
@@ -72,6 +85,8 @@ float BH1750_ReadLight(void)
     raw |= iic_read_byte(0);        // 读低字节，发送 NACK
     iic_stop();
     
+    xSemaphoreGive(i2c_mutex);
+
     if (raw == 0xFFFF || raw == 0) {
         return -2.0f;
     }

@@ -98,7 +98,6 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 void delay_us(uint32_t us);
-void TestQuery(void);
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

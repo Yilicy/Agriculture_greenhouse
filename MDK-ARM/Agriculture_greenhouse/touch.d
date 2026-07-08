@@ -48,3 +48,10 @@ agriculture_greenhouse\touch.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 agriculture_greenhouse\touch.o: ../USER/Inc/lcd_draw.h
 agriculture_greenhouse\touch.o: ../USER/Inc/touch.h
 agriculture_greenhouse\touch.o: ../USER/Inc/24cxx.h
+agriculture_greenhouse\touch.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+agriculture_greenhouse\touch.o: ../Core/Inc/FreeRTOSConfig.h
+agriculture_greenhouse\touch.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+agriculture_greenhouse\touch.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+agriculture_greenhouse\touch.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+agriculture_greenhouse\touch.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+agriculture_greenhouse\touch.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h

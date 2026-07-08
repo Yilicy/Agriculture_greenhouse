@@ -5,6 +5,7 @@
 #include "touch.h"
 #include "24cxx.h"
 #include "main.h"
+#include "FreeRTOS.h"
 
 _m_tp_dev tp_dev =
 {

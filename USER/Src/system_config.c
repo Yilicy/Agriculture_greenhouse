@@ -4,43 +4,60 @@
 #include <string.h>
 #include <stdio.h>
 
-// 全局变量
 SystemConfig_t g_sys_config;
 uint8_t g_config_initialized = 0;
-SemaphoreHandle_t MutexpHandle = NULL;
 
-#define CONFIG_FILE "0:/config.txt"
+#define CONFIG_FILE         "0:/config.txt"
+#define AUTO_SAVE_INTERVAL  pdMS_TO_TICKS(1800000)   // 30分钟
 
-//  默认配置
-void SystemConfig_SetDefaults(void)
+static volatile uint8_t config_dirty = 0;              // 脏标志
+static TimerHandle_t auto_save_timer = NULL;           // 定时保存定时器
+static volatile uint8_t save_request = 0;
+
+/**
+ * @brief 定时器回调：检查脏标志并保存
+ */
+static void AutoSaveTimerCallback(TimerHandle_t xTimer)
 {
-    // 用户配置
-    g_sys_config.temp_min = 22.0f;      // 适宜温度下限
-    g_sys_config.temp_max = 28.0f;      // 适宜温度上限
-    g_sys_config.light_min = 500;       // 适宜光照下限 (Lux)
-    g_sys_config.light_max = 8000;      // 适宜光照上限 (Lux)
-    
-    // 风扇
-    g_sys_config.fan_level = 0;         // 风扇关闭
-    g_sys_config.fan_mode = 1;          // 自动模式
-    g_sys_config.fan_state = 0;         // 关闭
-    g_sys_config.fan_last_manual_close = 0;
-    
-    // 卷帘
-    g_sys_config.curtain_state = 0;     // 卷帘关闭
-    g_sys_config.curtain_mode = 1;      // 自动模式
-    g_sys_config.curtain_last_manual_close = 0;
-    
-    // 补光灯
-    g_sys_config.light_state = 0;       // 补光灯关闭
-    g_sys_config.light_mode = 1;        // 自动模式
-    g_sys_config.light_last_manual_close = 0;
-    
-    // 系统
-    g_sys_config.system_mode = 1;       // 自动模式
+    if (config_dirty) {
+        config_dirty = 0;
+        save_request = 1;       // 告诉任务"需要保存了"
+    }
 }
 
-// 读取配置
+// 这个函数在AutoControlTask中调用
+void SystemConfig_CheckSave(void)
+{
+    if (save_request) {
+        save_request = 0;
+        SystemConfig_Save();    // 在任务中保存，安全
+    }
+}
+
+void SystemConfig_SetDefaults(void)
+{
+    g_sys_config.temp_min = 22.0f;
+    g_sys_config.temp_max = 28.0f;
+    g_sys_config.light_min = 500;
+    g_sys_config.light_max = 8000;
+    
+    g_sys_config.fan_level = 0;
+    g_sys_config.fan_state = 0;
+    g_sys_config.fan_mode = 1;
+    g_sys_config.fan_auto_level = 0;
+    g_sys_config.fan_last_manual_close = 0;
+    
+    g_sys_config.curtain_state = 0;
+    g_sys_config.curtain_mode = 1;
+    g_sys_config.curtain_last_manual_close = 0;
+    
+    g_sys_config.light_state = 0;
+    g_sys_config.light_mode = 1;
+    g_sys_config.light_last_manual_close = 0;
+    
+    g_sys_config.system_mode = 1;
+}
+
 void SystemConfig_Load(void)
 {
     FIL file;
@@ -49,7 +66,6 @@ void SystemConfig_Load(void)
     float fval;
     int ival;
     
-    // 先设置默认值
     SystemConfig_SetDefaults();
     
     fr = f_open(&file, CONFIG_FILE, FA_READ);
@@ -59,39 +75,28 @@ void SystemConfig_Load(void)
     }
     
     while (f_gets(line, sizeof(line), &file) != NULL) {
-        if (line[0] == '\n' || line[0] == '\r' || line[0] == '#') {
-            continue;
-        }
+        if (line[0] == '\n' || line[0] == '\r' || line[0] == '#') continue;
         
-        if (sscanf(line, " temp_min = %f", &fval) == 1) {
+        if (sscanf(line, " temp_min = %f", &fval) == 1)
             g_sys_config.temp_min = fval;
-        }
-        else if (sscanf(line, " temp_max = %f", &fval) == 1) {
+        else if (sscanf(line, " temp_max = %f", &fval) == 1)
             g_sys_config.temp_max = fval;
-        }
-        else if (sscanf(line, " light_min = %d", &ival) == 1) {
+        else if (sscanf(line, " light_min = %d", &ival) == 1)
             g_sys_config.light_min = (uint16_t)ival;
-        }
-        else if (sscanf(line, " light_max = %d", &ival) == 1) {
+        else if (sscanf(line, " light_max = %d", &ival) == 1)
             g_sys_config.light_max = (uint16_t)ival;
-        }
-        else if (sscanf(line, " fan_mode = %d", &ival) == 1) {
+        else if (sscanf(line, " fan_mode = %d", &ival) == 1)
             g_sys_config.fan_mode = (uint8_t)ival;
-        }
-        else if (sscanf(line, " curtain_mode = %d", &ival) == 1) {
+        else if (sscanf(line, " curtain_mode = %d", &ival) == 1)
             g_sys_config.curtain_mode = (uint8_t)ival;
-        }
-        else if (sscanf(line, " light_mode = %d", &ival) == 1) {
+        else if (sscanf(line, " light_mode = %d", &ival) == 1)
             g_sys_config.light_mode = (uint8_t)ival;
-        }
-        else if (sscanf(line, " system_mode = %d", &ival) == 1) {
+        else if (sscanf(line, " system_mode = %d", &ival) == 1)
             g_sys_config.system_mode = (uint8_t)ival;
-        }
     }
     
     f_close(&file);
     
-    // 上电时重置冷却期和设备状态
     g_sys_config.fan_last_manual_close = 0;
     g_sys_config.curtain_last_manual_close = 0;
     g_sys_config.light_last_manual_close = 0;
@@ -99,6 +104,7 @@ void SystemConfig_Load(void)
     g_sys_config.fan_state = 0;
     g_sys_config.curtain_state = 0;
     g_sys_config.light_state = 0;
+    g_sys_config.fan_auto_level = 0;
     
     g_config_initialized = 1;
 }
@@ -108,12 +114,11 @@ void SystemConfig_Save(void)
     FIL file;
     FRESULT fr;
     
-    fr = f_open(&file, CONFIG_FILE, FA_CREATE_ALWAYS | FA_WRITE);
-    if (fr != FR_OK) {
-        return;
-    }
+    vTaskDelay(pdMS_TO_TICKS(200));
     
-    f_printf(&file, "# ========== 大棚环境配置 ==========\r\n");
+    fr = f_open(&file, CONFIG_FILE, FA_CREATE_ALWAYS | FA_WRITE);
+    if (fr != FR_OK) return;
+    
     f_printf(&file, "temp_min = %.1f\r\n", g_sys_config.temp_min);
     f_printf(&file, "temp_max = %.1f\r\n", g_sys_config.temp_max);
     f_printf(&file, "light_min = %d\r\n", g_sys_config.light_min);
@@ -124,6 +129,29 @@ void SystemConfig_Save(void)
     f_printf(&file, "system_mode = %d\r\n", g_sys_config.system_mode);
     
     f_close(&file);
+    
+    printf("[CFG] 配置已保存\r\n");
+}
+
+void SystemConfig_MarkDirty(void)
+{
+    config_dirty = 1;
+}
+
+void SystemConfig_StartAutoSaveTimer(void)
+{
+    if (auto_save_timer != NULL) return;  // 已经创建过了
+    auto_save_timer = xTimerCreate(
+        "SaveTimer",
+        AUTO_SAVE_INTERVAL,
+        pdTRUE,                          // 自动重载
+        (void *)0,
+        AutoSaveTimerCallback
+    );
+    
+    if (auto_save_timer != NULL) {
+        xTimerStart(auto_save_timer, 0);
+    }
 }
 
 void SystemConfig_Init(void)
@@ -135,8 +163,7 @@ void SystemConfig_Init(void)
     if (!g_config_initialized) {
         printf("[CFG] 首次开机，创建默认配置\r\n");
         SystemConfig_Save();
-    }
-    else {
+    } else {
         printf("[CFG] 配置加载成功\r\n");
     }
     
@@ -164,6 +191,6 @@ void SystemConfig_Print(void)
            g_sys_config.light_mode == 1 ? "自动" : "手动",
            g_sys_config.light_state,
            g_sys_config.light_state == 1 ? "开" : "关");
-    printf("系统模式: %s\r\n", g_sys_config.system_mode == 1 ? "全自动" : "混合");
+    printf("系统模式: %s\r\n", g_sys_config.system_mode == 1 ? "全自动" : "手动");
     printf("==============================\r\n");
 }

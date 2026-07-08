@@ -45,3 +45,14 @@ agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ha
 agriculture_greenhouse\24cxx.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 agriculture_greenhouse\24cxx.o: ../Core/Inc/main.h
 agriculture_greenhouse\24cxx.o: E:\Embeddded\keil\Core\ARM\ARMCC\Bin\..\include\stdio.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+agriculture_greenhouse\24cxx.o: ../Core/Inc/FreeRTOSConfig.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+agriculture_greenhouse\24cxx.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h

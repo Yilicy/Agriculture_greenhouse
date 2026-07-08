@@ -1,5 +1,7 @@
 #include "24cxx.h"
 #include "iic.h"
+#include "FreeRTOS.h"
+#include "semphr.h"
 
 /**
  * @brief       初始化IIC接口
@@ -54,6 +56,9 @@ uint8_t at24cxx_read_one_byte(uint16_t addr)
  */
 void at24cxx_write_one_byte(uint16_t addr, uint8_t data)
 {
+    extern SemaphoreHandle_t i2c_mutex;
+    xSemaphoreTake(i2c_mutex, portMAX_DELAY);
+
     iic_start();    /* 发送起始信号 */
 
     iic_send_byte(0xA0 + ((addr >> 8) << 1));   /* 发送器件 0xA0 + 高位a8/a9/a10地址,写数据 */
@@ -66,7 +71,8 @@ void at24cxx_write_one_byte(uint16_t addr, uint8_t data)
     iic_send_byte(data);        /* 发送1字节 */
     iic_wait_ack();             /* 等待ACK */
     iic_stop();                 /* 产生一个停止条件 */
-    HAL_Delay(10);               /* 注意: EEPROM 写入比较慢,必须等到10ms后再写下一个字节 */
+    xSemaphoreGive(i2c_mutex);
+    vTaskDelay(pdMS_TO_TICKS(10));               /* 注意: EEPROM 写入比较慢,必须等到10ms后再写下一个字节 */
 }
 
 /**

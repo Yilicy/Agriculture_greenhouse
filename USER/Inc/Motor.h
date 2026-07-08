@@ -19,5 +19,7 @@
 #define HYSTERESIS 1.5f   // 1.5°C 迟滞
 
 void Fan_SetLevel(int level);
+void Light_On(void);
+void Light_Off(void);
 
 #endif /* MOTOR_H_ */

@@ -64,8 +64,8 @@ void LCD_SetWindows(uint16_t xStart, uint16_t yStart,uint16_t xEnd,uint16_t yEnd
 /* 填充指定区域 */
 void LCD_Fill(uint16_t xsta,uint16_t ysta,uint16_t xend,uint16_t yend,uint16_t color)
 {
-	uint16_t width=xend-xsta;
-	uint16_t heighth=yend-ysta;
+	uint16_t width=xend-xsta+1;
+	uint16_t heighth=yend-ysta+1;
 	uint32_t total_pixels=(uint32_t)width*heighth;
 
 	LCD_SetWindows(xsta,ysta,xend,yend);
@@ -124,7 +124,6 @@ void lcd_draw_rectangle(uint16_t x,uint16_t y,uint16_t wide,uint16_t height,uint
 	LCD_DrawLine(x+wide,y,x+wide,y+height,color);
 	LCD_DrawLine(x,y,x,y+height,color);
 	LCD_DrawLine(x,y+height,x+wide,y+height,color);
-
 }
 
 //显示单个字符
@@ -260,56 +259,6 @@ void lcd_show_circle(uint16_t x,uint16_t y,uint16_t r,uint16_t color)
     }
 }
 
-//显示中文字符串
-void lcd_showchinese(uint16_t x,uint16_t y,int8_t sizey,const char *s,uint16_t color,uint16_t back_color)
-{
-	uint16_t num;
-	while(*s!=0)
-	{
-		// if(sizey==12){
-		// 	for(int i=0;i<sizeof(tfont12)/sizeof(typFNT_GB12);i++){
-		// 		if(memcmp(font_labels[i], s, 3) == 0){
-		// 			num=i;
-		// 			break;
-		// 		}
-		// 	}
-		// 	LCD_ShowChinese(x,y,num,sizey,color);
-		// }
-		// else if(sizey==16) {
-		// 	for(int i=0;i<sizeof(tfont16)/sizeof(typFNT_GB16);i++){
-		// 		if(memcmp(font_labels[i], s, 3) == 0){
-		// 			num=i;
-		// 			break;
-		// 		}
-		// 	}
-		// 	LCD_ShowChinese(x,y,num,sizey,color);
-		// }
-		if(sizey==24)
-		{
-			for(int i=0;i<sizeof(tfont24)/sizeof(typFNT_GB24);i++){
-				if(memcmp(font_labels[i], s, 3) == 0){
-					num=i;
-					break;
-				}
-			}
-			LCD_ShowChinese(x,y,num,sizey,color,back_color);
-		} 
-		else if(sizey==32)
-		{
-			for(int i=0;i<sizeof(tfont32)/sizeof(typFNT_GB32);i++){
-				if(memcmp(font_labels[i], s, 3) == 0){
-					num=i;
-					break;
-				}
-			}
-			LCD_ShowChinese(x,y,num,sizey,color,back_color);
-		} 
-		else return;
-		s+=3;
-		x+=sizey;
-	}
-}
-
 /* 显示单个汉字 */
 void LCD_ShowChinese(uint16_t x,uint16_t y,uint8_t num,uint16_t sizey,uint16_t color,uint16_t back_color)
 {
@@ -337,20 +286,20 @@ void LCD_ShowChinese(uint16_t x,uint16_t y,uint8_t num,uint16_t sizey,uint16_t c
 			// 		break;
 			// 	}
 			// }
-			// else if(sizey==16){
-			// 	if(tfont16[num].Msk[i]&(0x01<<j))	
-			// 		LCD_DrawPoint(x,y,color);
-			// 	// else
-			// 	// 	LCD_DrawPoint(x,y,back_color);
-			// 	x++;
-			// 	if((x-x0)==sizey)
-			// 	{
-			// 		x=x0;
-			// 		y++;
-			// 		break;
-			// 	}
-			// }
-			if(sizey==24){
+			if(sizey==16){
+				if(tfont16[num].Msk[i]&(0x01<<j))	
+					LCD_DrawPoint(x,y,color);
+				else
+					LCD_DrawPoint(x,y,back_color);
+				x++;
+				if((x-x0)==sizey)
+				{
+					x=x0;
+					y++;
+					break;
+				}
+			}
+			else if(sizey==24){
 				if(tfont24[num].Msk[i]&(0x01<<j))	
 					LCD_DrawPoint(x,y,color);
 				else
@@ -377,6 +326,56 @@ void LCD_ShowChinese(uint16_t x,uint16_t y,uint8_t num,uint16_t sizey,uint16_t c
 				}
 			}
 		}
+	}
+}
+
+//显示中文字符串
+void lcd_showchinese(uint16_t x,uint16_t y,int8_t sizey,const char *s,uint16_t color,uint16_t back_color)
+{
+	uint16_t num;
+	while(*s!=0)
+	{
+		// if(sizey==12){
+		// 	for(int i=0;i<sizeof(tfont12)/sizeof(typFNT_GB12);i++){
+		// 		if(memcmp(font_labels[i], s, 3) == 0){
+		// 			num=i;
+		// 			break;
+		// 		}
+		// 	}
+		// 	LCD_ShowChinese(x,y,num,sizey,color);
+		// }
+		if(sizey==16) {
+			for(int i=0;i<sizeof(tfont16)/sizeof(typFNT_GB16);i++){
+				if(memcmp(font_label[i], s, 3) == 0){
+					num=i;
+					break;
+				}
+			}
+			LCD_ShowChinese(x,y,num,sizey,color,back_color);
+		}
+		else if(sizey==24)
+		{
+			for(int i=0;i<sizeof(tfont24)/sizeof(typFNT_GB24);i++){
+				if(memcmp(font_labels[i], s, 3) == 0){
+					num=i;
+					break;
+				}
+			}
+			LCD_ShowChinese(x,y,num,sizey,color,back_color);
+		} 
+		else if(sizey==32)
+		{
+			for(int i=0;i<sizeof(tfont32)/sizeof(typFNT_GB32);i++){
+				if(memcmp(font_labels[i], s, 3) == 0){
+					num=i;
+					break;
+				}
+			}
+			LCD_ShowChinese(x,y,num,sizey,color,back_color);
+		} 
+		else return;
+		s+=3;
+		x+=sizey;
 	}
 }
 
